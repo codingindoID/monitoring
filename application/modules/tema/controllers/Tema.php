@@ -6,6 +6,7 @@ class Tema extends MY_Controller {
 	public function index()
 	{
 		$this->load->view('header');
+		$this->load->view('navbar');
 		$this->load->view('sidebar');
 		$this->load->view('v_index');
 		$this->load->view('footer');
