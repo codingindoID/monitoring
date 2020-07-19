@@ -25,7 +25,7 @@
          <ul class="dropdown-menu">
           <!-- User image -->
           <li class="user-header">
-           <img src="<?php echo base_url().'assets/'?>dist/img/pp.jpg" class="img-circle" alt="User Image">
+           <img src="<?php echo base_url().'assets/'?>dist/img/app.jpg" class="img-circle" alt="User Image">
 
            <p>
             <?php echo $this->session->userdata('ses_nama'); ?>

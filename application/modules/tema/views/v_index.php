@@ -37,7 +37,7 @@
 </div>
 <?php 
 
-//$this->load->view('right_pane');
+$this->load->view('right_pane');
 $this->load->view('footer');
 $this->load->view('script_js');
 ?>

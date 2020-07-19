@@ -30,7 +30,7 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-red-light sidebar-mini">
+<body class="hold-transition skin-purple-light sidebar-mini">
   <div class="wrapper">
 
    <?php $this->load->view('navbar'); ?>
