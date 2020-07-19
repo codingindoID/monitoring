@@ -15,10 +15,6 @@
 </style>
 <div class="box"  style="margin-top: -10px;">
   <div class="box-header" style="margin-left: 5px;margin-right: 5px;">
-    <div class="btn-group" style="margin-bottom: -10px;">
-      <a data-toggle="modal" data-target="#modal-default" class="btn bg-purple"><i class="fa fa-plus"></i> input</a>
-      <a target="_blank" href="<?= site_url('beranda/cetak_all') ?>" class="btn btn-success"><i class="fa fa-print"></i> cetak</a>
-    </div>
   </div>
   <!-- /.box-header -->
   <div class="box-body" style="margin-left: 5px;margin-right: 5px;">
@@ -32,7 +28,6 @@
             <th class="text-center">Jenis Kunjungan</th>
             <th class="text-center">Tanggal Kunjungan</th>
             <th class="text-center">Jam Masuk</th>
-             <th class="text-center">Tanggal Keluar</th>
             <th class="text-center">Jam Keluar</th>
             <th class="text-center">#</th>
           </tr>
@@ -46,8 +41,7 @@
              <td><?php echo $k->jenis_kunjungan ?></td>
              <td><?php echo date('d-m-Y', strtotime($k->tgl_kunjungan)) ?></td>
              <td><?php echo $k->jam_masuk ?></td>
-             <td><?php echo $k->tgl_keluar==null ? '-' : date('d-m-Y', strtotime($k->tgl_keluar))  ?></td>
-             <td><?php echo $k->jam_keluar==null ? '-' : $k->jam_keluar?></td>
+             <td><?php echo $k->jam_keluar ?></td>
              <td>
               <?php if ($k->jam_keluar==null){ ?>
                 <a  data-toggle="modal" data-target="#modalkeluar" onclick="edit('<?php echo $k->id_kunjungan ?>')" class="btn-sm btn-warning"><i class="fa fa-power-off"></i></a>

@@ -34,7 +34,7 @@
     </style>
 
     <div class="login-box-body">
-      <center><img src="<?php echo base_url().'assets/'?>dist/img/pp.png" class="logo-img"></center>
+      <center><img src="<?php echo base_url().'assets/'?>dist/img/app.jpg" class="logo-img"></center>
       <?php if($this->session->flashdata('success')){ ?>  
       <div class="alert alert-success">  
         <strong>Success!</strong> <?php echo $this->session->flashdata('success'); ?>  

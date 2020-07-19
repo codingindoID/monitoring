@@ -5,13 +5,6 @@
 
 <!-- DataTables -->
 <script src="<?php echo base_url().'assets/'?>bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url().'assets/'?>dataTables.buttons.min.js"></script>
-<script src="<?php echo base_url().'assets/'?>buttons.flash.min.js"></script>
-<script src="<?php echo base_url().'assets/'?>jszip.min.js"></script>
-<script src="<?php echo base_url().'assets/'?>pdfmake.min.js"></script>
-<script src="<?php echo base_url().'assets/'?>vfs_fonts.js"></script>
-<script src="<?php echo base_url().'assets/'?>buttons.html5.min.js"></script>
-<script src="<?php echo base_url().'assets/'?>buttons.print.min.js"></script>
 <script src="<?php echo base_url().'assets/'?>bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -110,6 +103,7 @@
       }
       ]
     })
+    
     //Date picker
     $('#datepicker').datepicker({
       autoclose: true,

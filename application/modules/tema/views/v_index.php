@@ -10,7 +10,7 @@
         <small><?php echo $sub ?></small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> <?php echo $title ?></a></li>
+        <li><a href="#"><i class="fa <?php echo $icon ?>"></i> <?php echo $title ?></a></li>
         <li class="active"><?php echo $sub ?></li>
       </ol>
     </section>
