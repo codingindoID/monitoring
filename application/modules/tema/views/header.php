@@ -18,19 +18,29 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url().'assets/'?>dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
-  folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="<?php echo base_url().'assets/'?>dist/css/skins/_all-skins.min.css">
-  <!-- Morris chart -->
-  <link rel="stylesheet" href="<?php echo base_url().'assets/'?>bower_components/morris.js/morris.css">
-  <!-- jvectormap -->
-  <link rel="stylesheet" href="<?php echo base_url().'assets/'?>bower_components/jvectormap/jquery-jvectormap.css">
-  <!-- Date Picker -->
-  <link rel="stylesheet" href="<?php echo base_url().'assets/'?>bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="<?php echo base_url().'assets/'?>dist/css/skins/_all-skins.min.css">
+    <!-- Morris chart -->
+    <link rel="stylesheet" href="<?php echo base_url().'assets/'?>bower_components/morris.js/morris.css">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="<?php echo base_url().'assets/'?>bower_components/jvectormap/jquery-jvectormap.css">
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="<?php echo base_url().'assets/'?>bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 
-  <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-</head>
-<body class="hold-transition skin-purple-light sidebar-mini">
-  <div class="wrapper">
+    <!-- high chart -->
+    <script src="<?php echo base_url('assets/highchart/') ?>highcharts.js"></script>
+    <script src="<?php echo base_url('assets/highchart/') ?>series-label.js"></script>
+    <script src="<?php echo base_url('assets/highchart/') ?>exporting.js"></script>
+    <script src="<?php echo base_url('assets/highchart/') ?>export-data.js"></script>
+    <script src="<?php echo base_url('assets/highchart/') ?>accessibility.js"></script>
 
-   <?php $this->load->view('navbar'); ?>
+     <link rel="stylesheet" href="<?php echo base_url().'assets/highchart/'?>high.css">
+
+
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  </head>
+  <body class="hold-transition skin-purple-light sidebar-mini">
+    <div class="wrapper">
+
+     <?php $this->load->view('navbar'); ?>
