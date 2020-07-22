@@ -25,7 +25,7 @@ class Login extends MY_Controller {
 			$this->session->set_userdata('ses_username',$cek->username);
 			$this->session->set_userdata('ses_id',$cek->id_user);
 			$this->session->set_userdata('ses_level',$cek->level);
-			redirect('beranda','refresh');
+			redirect('dashboard','refresh');
 		}else{
 			$this->session->set_flashdata('error','username atau password salah');
 			redirect('login');

@@ -6,6 +6,7 @@ class Dashboard extends MY_Controller {
 	{
 		parent::__construct();
 		$this->load->model('M_dashboard');
+		$this->load->model('M_master');
 	}
 
 	public function index()
@@ -22,6 +23,7 @@ class Dashboard extends MY_Controller {
 			$data['total']	= $this->M_dashboard->get_kunjungan_filter($queri)->num_rows();
 			$data['rutin']	= $this->M_dashboard->get_kunjungan_status($queri,'rutin')->num_rows();
 			$data['non']	= $this->M_dashboard->get_kunjungan_status($queri,'non_rutin')->num_rows();
+			$data['tahun']	= $this->M_master->get_tahun()->result();
 			//echo $queri;
 			$this->template->load('tema/v_index','v_dashboard',$data);
 		}else{

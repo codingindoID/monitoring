@@ -7,107 +7,116 @@
       </button>
     </div>
   </div>
-  <form role="form" action="<?php echo site_url('dashboard/filter') ?>" method="post" id="filterform">
-    <div class="box-body">
-      <div class="col">
+  <div class="box-body">
+    <form role="form" action="<?php echo site_url('dashboard/filter') ?>" method="post" id="filterform">
+      <div class="box-body">
+        <div class="col">
 
-        <div class="row" style="margin-right: 10px;margin-left: 10px;">
-          <div class="col-lg-6 col-md-6 col-xs-6">
-            <div class="form-group">
-              <label>mulai tanggal </label>
+          <div class="row" style="margin-right: 10px;margin-left: 10px;">
+            <div class="col-lg-6 col-md-6 col-xs-6">
+              <div class="form-group">
+                <label>mulai tanggal </label>
 
-              <div class="input-group date">
-                <div class="input-group-addon">
-                  <i class="fa fa-calendar"></i>
+                <div class="input-group date">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input  required="true" name="startdate"  type="text" class="form-control pull-right" id="datepicker" value="<?php echo $start != null ? date('d-m-Y',strtotime($start)) :'' ?>">
                 </div>
-                <input  required="true" name="startdate"  type="text" class="form-control pull-right" id="datepicker" value="<?php echo $start != null ? date('d-m-Y',strtotime($start)) :'' ?>">
+                <!-- /.input group -->
               </div>
-              <!-- /.input group -->
+
             </div>
 
-          </div>
+            <div class="col-lg-6 col-md-6 col-xs-6">
+              <div class="form-group">
+                <label>sampai dengan</label>
 
-          <div class="col-lg-6 col-md-6 col-xs-6">
-            <div class="form-group">
-              <label>sampai dengan</label>
-
-              <div class="input-group date">
-                <div class="input-group-addon">
-                  <i class="fa fa-calendar"></i>
+                <div class="input-group date">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input required="true" type="text" name="enddate" class="form-control pull-right" id="dateend" value="<?php echo $end != null ? date('d-m-Y',strtotime($end)) :'' ?>" >
                 </div>
-                <input required="true" type="text" name="enddate" class="form-control pull-right" id="dateend" value="<?php echo $end != null ? date('d-m-Y',strtotime($end)) :'' ?>" >
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="row" style="margin-right: 10px;">
-          <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top: -5px">
-            <button type="submit" class="btn btn-success pull-right" ><i class="fa fa-filter"></i> filter</button>
+          <div class="row" style="margin-right: 10px;">
+            <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top: -5px">
+              <button type="submit" class="btn btn-success pull-right" ><i class="fa fa-filter"></i> filter</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>
 
 <!-- data -->
 <div class="row">
   <div class="col">
     <!-- chart -->
-    <div class="col-lg-6 col-md-6 col-xs-12">
+    <div class="col-lg-9 col-md-9 col-xs-12">
+
       <div class="box" style="padding: 5px;">
+<!--         <span style="margin-left: 10px;">Filter</span>
+        <select class="form-group" style="width:100px;margin-left: 10px;" onchange="alert('ok')">
+         <?php foreach ($tahun as $tahun): ?>
+            <option value="<?php echo $tahun->tahun ?>"><?php echo $tahun->tahun ?></option>
+          <?php endforeach ?> 
+        </select> -->
         <figure class="highcharts-figure">
           <div id="container"></div>
           <p class="highcharts-description" style="padding: 10px;">
             Basis data terdiri dari kunjungan kendaraan Rutin dan Non rutin yang di hitung berdasarkan data inputan dari sistem 
           </p>
         </figure>
-      </div>
+      </div>  
     </div>
 
-  <!-- count -->
-  <div class="col-lg-6 col-md-6 col-xs-12">
+    <!-- count -->
+    <div class="col-lg-3 col-md-3 col-xs-12">
       <!-- total -->
       <div class="small-box bg-purple">
        <div class="inner">
-          <center><h3><?php echo $total ?></h3></center>
+        <center><h3><?php echo $total ?></h3></center>
 
-          <center><p>Total Kunjungan</p></center>
-        </div>
-        <div class="icon">
-          <i class="ion ion-person"></i>
-        </div>
-        <a href="#" class="small-box-footer">Detil info <i class="fa fa-arrow-circle-right"></i></a>
-      </div>
-
-    <!-- rutin -->
-    <div class="small-box bg-green">
-     <div class="inner">
-        <center><h3><?php echo $rutin ?></h3></center>
-
-        <center><p>Pengunjung Rutin</p></center>
+        <center><p>Total Kunjungan</p></center>
       </div>
       <div class="icon">
-        <i class="ion ion-pie-graph"></i>
+        <i class="ion ion-person"></i>
       </div>
       <a href="#" class="small-box-footer">Detil info <i class="fa fa-arrow-circle-right"></i></a>
     </div>
 
-    <!-- non rutin -->
-    <div class="small-box bg-blue">
-       <div class="inner">
-          <center><h3><?php echo $non ?></h3></center>
+    <!-- rutin -->
+    <div class="small-box bg-green">
+     <div class="inner">
+      <center><h3><?php echo $rutin ?></h3></center>
 
-          <center><p>Pengunjung Tidak Rutin</p></center>
-        </div>
-        <div class="icon">
-          <i class="ion ion-stats-bars"></i>
-        </div>
-        <a href="#" class="small-box-footer">Detil info <i class="fa fa-arrow-circle-right"></i></a>
+      <center><p>Pengunjung Rutin</p></center>
     </div>
+    <div class="icon">
+      <i class="ion ion-pie-graph"></i>
+    </div>
+    <a href="#" class="small-box-footer">Detil info <i class="fa fa-arrow-circle-right"></i></a>
   </div>
-  <!--end count -->
+
+  <!-- non rutin -->
+  <div class="small-box bg-blue">
+   <div class="inner">
+    <center><h3><?php echo $non ?></h3></center>
+
+    <center><p>Pengunjung Tidak Rutin</p></center>
+  </div>
+  <div class="icon">
+    <i class="ion ion-stats-bars"></i>
+  </div>
+  <a href="#" class="small-box-footer">Detil info <i class="fa fa-arrow-circle-right"></i></a>
+</div>
+</div>
+<!--end count -->
 </div>
 </div>
 <!-- end data -->
@@ -115,64 +124,63 @@
 <!-- js chart -->
 <script type="text/javascript">
   Highcharts.chart('container', {
-
-    title: {
-      text: 'Monitoring Keluar Masuk Kendaraan '
+    chart: {
+      type: 'column'
     },
-
+    title: {
+      text: 'Monitoring Keluar Masuk Kendaraan'
+    },
     subtitle: {
       text: 'Data diambil dari rata-rata keluar masuk kendaraan setiap bulan'
     },
-
-    yAxis: {
-      title: {
-        text: 'total kendaraan'
-      }
-    },
-
     xAxis: {
-      accessibility: {
-        rangeDescription: 'Range: Januari - Desember'
+      categories: [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec'
+      ],
+      crosshair: true
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: 'Total Pengunjung'
       }
     },
-
-    legend: {
-      layout: 'vertical',
-      align: 'right',
-      verticalAlign: 'middle'
+    tooltip: {
+      headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+      pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+      '<td style="padding:0"><b>{point.y:.1f} pengunjung</b></td></tr>',
+      footerFormat: '</table>',
+      shared: true,
+      useHTML: true
     },
-
     plotOptions: {
-      series: {
-        label: {
-          connectorAllowed: false
-        },
-        pointStart: 1
+      column: {
+        pointPadding: 0.2,
+        borderWidth: 0
       }
     },
-
-    series: [{
+    series: [
+    {
       name: 'Rutin',
-      data: [12,85,34,2,13,45,65,12,11,12,13,34]
-    }, {
+      data: [50, 120, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+
+    }, 
+    {
       name: 'Non Rutin',
-      data: [15,0,34,56,12,3,45,12,34,89,12,11]
-    }],
+      data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
 
-    responsive: {
-      rules: [{
-        condition: {
-          maxWidth: 500
-        },
-        chartOptions: {
-          legend: {
-            layout: 'horizontal',
-            align: 'center',
-            verticalAlign: 'bottom'
-          }
-        }
-      }]
     }
-
+    ]
   });
 </script>

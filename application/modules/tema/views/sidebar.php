@@ -51,6 +51,18 @@
           </a>
         </li>
       </ul>
+       <li class="treeview">
+        <a href="#">
+          <i class="fa fa-gear fa-black"></i>
+          <span>Master</span>
+        </a>
+        <ul id="menu_surat" class="treeview-menu">
+          <li><a href="<?php echo site_url('master/perusahaan/') ?>"><i class="fa  fa-exchange"></i>Master Data Perusahaan</a></li>
+          <li><a href="<?php echo site_url('') ?>"><i class="fa fa-filter"></i>Master Data Pegawai</a></li>
+          <li><a href="<?php echo site_url('') ?>"><i class="fa fa-filter"></i>Master Merek Kendaraan</a></li>
+          <li><a href="<?php echo site_url('') ?>"><i class="fa fa-filter"></i>Master Data Kendaraan</a></li>
+        </ul>
+      </li>
     </ul>
   </section>
   <!-- /.sidebar -->
