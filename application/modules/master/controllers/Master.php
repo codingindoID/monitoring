@@ -38,6 +38,17 @@ class Master extends MY_Controller {
 		}
 	}
 
+
+	//master pegawai
+	public function pegawai()
+	{
+		$data['title']		= 'Master';
+		$data['sub']		= 'data pegawai';
+		$data['icon']		= "fa-user";
+		$data['perusahaan']		= $this->M_master->get_perusahaan()->result();
+		$this->template->load('tema/v_index','master_pegawai',$data);
+	}
+
 }
 
 /* End of file master.php */

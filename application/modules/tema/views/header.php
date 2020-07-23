@@ -27,6 +27,9 @@
     <!-- Date Picker -->
     <link rel="stylesheet" href="<?php echo base_url().'assets/'?>bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 
+    <!-- Select2 -->
+    <link rel="stylesheet" href="<?php echo base_url().'assets/'?>bower_components/select2/dist/css/select2.min.css">
+
     <!-- high chart -->
     <script src="<?php echo base_url('assets/highchart/') ?>highcharts.js"></script>
     <script src="<?php echo base_url('assets/highchart/') ?>series-label.js"></script>
@@ -34,7 +37,7 @@
     <script src="<?php echo base_url('assets/highchart/') ?>export-data.js"></script>
     <script src="<?php echo base_url('assets/highchart/') ?>accessibility.js"></script>
 
-     <link rel="stylesheet" href="<?php echo base_url().'assets/highchart/'?>high.css">
+    <link rel="stylesheet" href="<?php echo base_url().'assets/highchart/'?>high.css">
 
 
     <!-- Google Font -->

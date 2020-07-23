@@ -22,6 +22,10 @@
 <script src="<?php echo base_url().'assets/'?>bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="<?php echo base_url().'assets/'?>bower_components/fastclick/lib/fastclick.js"></script>
+
+<!-- Select2 -->
+<script src="<?php echo base_url().'assets/'?>bower_components/select2/dist/js/select2.full.min.js"></script>
+
 <!-- AdminLTE App -->
 <script src="<?php echo base_url().'assets/'?>dist/js/adminlte.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -38,6 +42,9 @@
 <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
 <script src="<?php echo base_url().'assets/'?>bower_components/Flot/jquery.flot.categories.js"></script>
 
+<!-- Select2 -->
+<script src="<?php echo base_url().'assets/'?>bower_components/select2/dist/js/select2.full.min.js"></script>
+
 <!-- ChartJS -->
 <script src="<?php echo base_url().'assets/'?>bower_components/chart.js/Chart.js"></script>
 
@@ -46,6 +53,7 @@
 <!-- page script -->
 <script>
   $(function () {
+    $('.select2').select2()
     $('#example1').DataTable()
     $('#example2').DataTable({
       'paging'      : true,

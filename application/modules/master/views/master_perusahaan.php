@@ -52,3 +52,7 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+document.getElementById('menu_master').setAttribute("style", "display : block");
+</script>
