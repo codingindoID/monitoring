@@ -58,9 +58,9 @@
         </a>
         <ul id="menu_master" class="treeview-menu">
           <li><a href="<?php echo site_url('master/perusahaan/') ?>"><i class="fa fa-industry"></i>Master Data Perusahaan</a></li>
-          <li><a href="<?php echo site_url('master/pegawai/') ?>"><i class="fa fa-user"></i>Master Data Pegawai</a></li>
-          <li><a href="<?php echo site_url('') ?>"><i class="fa fa-car"></i>Master Merek Kendaraan</a></li>
-          <li><a href="<?php echo site_url('') ?>"><i class="fa fa-tasks"></i>Master Data Kendaraan</a></li>
+          <li><a href="<?php echo site_url('master/driver/') ?>"><i class="fa fa-user"></i>Master Data Driver</a></li>
+          <li><a href="<?php echo site_url('master/merek/') ?>"><i class="fa fa-car"></i>Master Merek Kendaraan</a></li>
+          <li><a href="<?php echo site_url('master/data_kendaraan/') ?>"><i class="fa fa-tasks"></i>Master Data Kendaraan</a></li>
         </ul>
       </li>
     </ul>

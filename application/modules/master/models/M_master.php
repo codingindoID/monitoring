@@ -8,9 +8,20 @@ class M_master extends CI_Model {
 		$this->db->insert('tb_perusahaan', $data);
 	}
 
-function get_perusahaan()
+	function get_perusahaan()
 	{
 		return $this->db->get('tb_perusahaan');
+	}
+
+	function input_driver($data)
+	{
+		$this->db->insert('tb_pegawai', $data);
+	}
+
+	function get_driver()
+	{
+		$this->db->join('tb_perusahaan', 'tb_perusahaan.id_perusahaan = tb_pegawai.id_perusahaan');
+		return $this->db->get('tb_pegawai');
 	}
 
 }
