@@ -160,31 +160,158 @@ class Master extends MY_Controller {
 	{
 		$lvl = $this->session->userdata('ses_level');
 		if($lvl){
-			$data = array(
-				'id_data'			=> "INV-".uniqid(6),
-				'no_pol'		=> $this->input->post('nopol'),
-				'pemilik'		=> $this->input->post('pemilik'),
-				'perusahaan'		=> $this->input->post('perusahaan'),
-				'jenis'			=> $this->input->post('jenis'),
-				'merek'			=> $this->input->post('merek'),
-				'seri'			=> $this->input->post('seri'),
-				'warna'			=> $this->input->post('warna'),
-				'id_kepemilikan'	=> $this->input->post('kepemilikan'),
-				'tgl_teregistrasi'		=> date('Y-m-d'),
-				'tgl_kadaluwarsa'		=> date('Y-m-d',strtotime($this->input->post('dateexp')))
+			$id = array(
+				'no_pol'	=>  $this->input->post('nopol')
 			);
-			$cek = $this->M_master->input_data_kendaraan($data);
+
+			$cek = $this->M_master->get_data_by_id($id)->num_rows();
+
+			if($cek){
+				$this->session->set_flashdata('error','ups, nomor polisi :'.$this->input->post('nopol').' ,udah terdaftar,.');
+				redirect('master/data_kendaraan','refresh');
+			}else{
+				/*config QR-CODE*/
+				$this->load->library('ciqrcode');
+
+				$config['cacheable']    = true; //boolean, the default is true
+        		$config['cachedir']     = './assets/'; //string, the default is application/cache/
+        		$config['errorlog']     = './assets/'; //string, the default is application/logs/
+        		$config['imagedir']     = './assets/image/qr_code/'; //direktori penyimpanan qr code
+        		$config['quality']      = true; //boolean, the default is true
+        		$config['size']         = '1024'; //interger, the default is 1024
+        		$config['black']        = array(224,255,255); // array, default is array(255,255,255)
+        		$config['white']        = array(70,130,180); // array, default is array(0,0,0)
+        		$this->ciqrcode->initialize($config);
+
+        		$image_name=$this->input->post('nopol').'.png';
+
+        		$params['data'] = $this->input->post('nopol'); //data yang akan di jadikan QR CODE
+        		$params['level'] = 'H'; //H=High
+        		$params['size'] = 10;
+        		$params['savename'] = FCPATH.$config['imagedir'].$image_name; //simpan image QR CODE ke folder 
+        		$this->ciqrcode->generate($params);
+        		/*end config*/
+
+        		$data = array(
+        			'id_data'			=> "INV-".uniqid(6),
+        			'no_pol'			=> $this->input->post('nopol'),
+        			'pemilik'			=> $this->input->post('pemilik'),
+        			'perusahaan'		=> $this->input->post('perusahaan'),
+        			'jenis'				=> $this->input->post('jenis'),
+        			'merek'				=> $this->input->post('merek'),
+        			'seri'				=> $this->input->post('seri'),
+        			'warna'				=> $this->input->post('warna'),
+        			'id_kepemilikan'	=> $this->input->post('kepemilikan'),
+        			'tgl_teregistrasi'	=> date('Y-m-d'),
+        			'tgl_kadaluwarsa'	=> date('Y-m-d',strtotime($this->input->post('dateexp'))),
+        			'qr_code'			=> $image_name
+        		);
+        		$cek = $this->M_master->input_data_kendaraan($data);
+        		if (!$cek) {
+        			$this->session->set_flashdata('success','Data berhasil didaftarkan');
+        			redirect('master/data_kendaraan','refresh');
+        		}else{
+        			$this->session->set_flashdata('error','ups, ada yang salah,.');
+        			redirect('master/data_kendaraan','refresh');
+        		}
+        	}
+
+
+        }else{
+        	redirect('login','refresh');
+        }
+    }
+
+	//detail data kendaraan
+    function detil($id)
+    {
+    	$lvl = $this->session->userdata('ses_level');
+    	if($lvl){
+    		$where = array(
+    			'id_data' => $id
+    		);
+
+    		$data = $this->M_master->get_data_by_id($where)->row();
+    		echo json_encode($data);
+    	}else{
+    		redirect('login','refresh');
+    	}
+    }
+
+	//view edit data
+    function edit_kendaraan($id)
+    {
+    	$lvl = $this->session->userdata('ses_level');
+    	if($lvl){
+    		$where = array(
+    			'id_data' => $id
+    		); 
+
+    		$data['title']		= 'Master';
+    		$data['sub']		= 'Edit data kendaraan';
+    		$data['icon']		= "fa-gear";
+    		$data['perusahaan']		= $this->M_master->get_perusahaan()->result();
+    		$data['merek']			= $this->M_master->get_merek()->result();
+    		$data['kendaraan']		= $this->M_master->get_data_by_id($where)->row();
+    		//echo json_encode($data);
+    		$this->template->load('tema/v_index','edit_data',$data);
+    	}else{
+    		redirect('login','refresh');
+    	}
+    }
+
+    function update_data_kendaraan()
+    {
+    	$lvl = $this->session->userdata('ses_level');
+    	if($lvl){
+    		$where = array(
+    			'id_data' => $this->input->post('id_data')
+    		); 
+
+    		$data = array(
+    			'pemilik'			=> $this->input->post('pemilik'),
+    			'perusahaan'		=> $this->input->post('perusahaan'),
+    			'jenis'				=> $this->input->post('jenis'),
+    			'merek'				=> $this->input->post('merek'),
+    			'seri'				=> $this->input->post('seri'),
+    			'warna'				=> $this->input->post('warna'),
+    			'id_kepemilikan'	=> $this->input->post('kepemilikan'),
+    			'tgl_kadaluwarsa'	=> date('Y-m-d',strtotime($this->input->post('dateexp')))
+    		);
+    		$cek = $this->M_master->update_data_kendaraan($where, $data);
+    		if (!$cek) {
+    			$this->session->set_flashdata('success','Data berhasil diupdate');
+    			redirect('master/data_kendaraan','refresh');
+    		}else{
+    			$this->session->set_flashdata('error','ups, ada yang salah,.');
+    			redirect('master/data_kendaraan','refresh');
+    		}
+    	}else{
+
+    	}
+    }
+
+    //hapus
+    function hapus_data_kendaraan($id)
+    {
+    	$lvl = $this->session->userdata('ses_level');
+    	if($lvl){
+    		$where = array(
+    			'id_data' => $id
+    		); 
+    		$cek = $this->M_master->hapus($where,'tb_data_kendaraan');
 			if (!$cek) {
-				$this->session->set_flashdata('success','Data berhasil didaftarkan');
+				$this->session->set_flashdata('success','Data Berhasil Dihapus');
 				redirect('master/data_kendaraan','refresh');
 			}else{
 				$this->session->set_flashdata('error','ups, ada yang salah,.');
 				redirect('master/data_kendaraan','refresh');
 			}
-		}else{
-			redirect('login','refresh');
-		}
-	}
+
+    	}else{
+    		redirect('login','refresh');
+    	}
+    }
 
 }
 

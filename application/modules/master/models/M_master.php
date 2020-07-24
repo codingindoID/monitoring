@@ -46,12 +46,30 @@ class M_master extends CI_Model {
 		$this->db->insert('tb_data_kendaraan', $data);
 	}
 
+	function update_data_kendaraan($where,$data)
+	{
+		$this->db->where($where);
+		$this->db->update('tb_data_kendaraan', $data);
+	}
+
 	function get_data()
 	{
 		$this->db->select('*');
 		$this->db->from('tb_data_kendaraan');
 		$this->db->join('tb_status_kepemilikan', 'tb_status_kepemilikan.id_kepemilikan=tb_data_kendaraan.id_kepemilikan');
 		$this->db->join('tb_perusahaan', 'tb_perusahaan.id_perusahaan = tb_data_kendaraan.perusahaan');
+		$this->db->join('tb_merek', 'tb_merek.id_merek = tb_data_kendaraan.merek');
+		return $this->db->get();
+	}
+
+	function get_data_by_id($where)
+	{
+		$this->db->select('*');
+		$this->db->from('tb_data_kendaraan');
+		$this->db->join('tb_status_kepemilikan', 'tb_status_kepemilikan.id_kepemilikan=tb_data_kendaraan.id_kepemilikan');
+		$this->db->join('tb_perusahaan', 'tb_perusahaan.id_perusahaan = tb_data_kendaraan.perusahaan');
+		$this->db->join('tb_merek', 'tb_merek.id_merek = tb_data_kendaraan.merek');
+		$this->db->where($where);
 		return $this->db->get();
 	}
 

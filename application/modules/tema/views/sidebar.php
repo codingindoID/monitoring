@@ -45,11 +45,11 @@
 
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header" style="color:black">ADMIN</li>
-        <li>
+        <!-- <li>
           <a href="<?php echo site_url('pengunjung') ?>">
             <i class="fa fa-car"></i> <span>Pengunjung Rutin</span>
           </a>
-        </li>
+        </li> -->
       </ul>
        <li class="treeview">
         <a href="#">

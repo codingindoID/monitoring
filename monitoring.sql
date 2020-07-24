@@ -3,15 +3,15 @@
 
  Source Server         : lokal
  Source Server Type    : MySQL
- Source Server Version : 100406
+ Source Server Version : 100411
  Source Host           : localhost:3306
  Source Schema         : monitoring
 
  Target Server Type    : MySQL
- Target Server Version : 100406
+ Target Server Version : 100411
  File Encoding         : 65001
 
- Date: 24/07/2020 11:31:23
+ Date: 24/07/2020 21:44:35
 */
 
 SET NAMES utf8mb4;
@@ -50,13 +50,9 @@ CREATE TABLE `tb_data_kendaraan`  (
   `seri` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `warna` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `perusahaan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `qr_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id_data`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of tb_data_kendaraan
--- ----------------------------
-INSERT INTO `tb_data_kendaraan` VALUES ('INV-65f1a63ca991d3', 'K-5049-FQ', 'Agus Setiawan', '1', '2020-07-24', '2021-08-25', 'mobil', 'MRK-45f1a43e8c1f18', 'Brio', 'merah', NULL);
 
 -- ----------------------------
 -- Table structure for tb_jenis_kendaraan
