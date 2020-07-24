@@ -24,6 +24,37 @@ class M_master extends CI_Model {
 		return $this->db->get('tb_pegawai');
 	}
 
+	function get_merek()
+	{
+		return $this->db->get('tb_merek');
+	}
+
+	function input_merek($data)
+	{
+		$this->db->insert('tb_merek', $data);
+	}
+
+	/*all function hapus*/
+	function hapus($where,$table)
+	{
+		$this->db->where($where);
+		$this->db->delete($table);
+	}
+
+	function input_data_kendaraan($data)
+	{
+		$this->db->insert('tb_data_kendaraan', $data);
+	}
+
+	function get_data()
+	{
+		$this->db->select('*');
+		$this->db->from('tb_data_kendaraan');
+		$this->db->join('tb_status_kepemilikan', 'tb_status_kepemilikan.id_kepemilikan=tb_data_kendaraan.id_kepemilikan');
+		$this->db->join('tb_perusahaan', 'tb_perusahaan.id_perusahaan = tb_data_kendaraan.perusahaan');
+		return $this->db->get();
+	}
+
 }
 
 /* End of file M_master.php */

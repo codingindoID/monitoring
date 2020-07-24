@@ -1,50 +1,42 @@
-  <!-- /.box-header -->
-  <div class="row">
-      <div class="col-lg-12 col-md-12 col-xs-12">
-        <div class="box">
-          <div class="box-header">
-            <span class="pull-right"><strong>input data baru</strong></span>
-          </div>
-          <form role="form" method="post" action="<?php echo site_url('master/input_driver/') ?>">
-            <div class="form-group">
-             <div class="form-group">
-              <label>Nama</label>
-              <input type="text" class="form-control" placeholder="Nama" name="nama" required>
-            </div> 
-            <label>Perusahaan</label>
-            <select name="perusahaan" class="form-control select2" style="width: 100%;" required>
-             <option value="">---perusahaan---</option>}
-             option
-             <?php 
-             $no = 1;
-             foreach ($perusahaan as $p): ?>
-               <option value="<?php echo $p->id_perusahaan ?>"><?php echo $p->nama_perusahaan ?></option>
-             <?php endforeach ?>
-           </select>
-         </div>
-         <button type="submit" class="btn bg-purple"><i class="fa fa-save"></i>Simpan</button>
-       </form>
-     </div> 
-     <div class="box-body">
-      <table class="table table-bordered table-striped"  id="example1">
-        <thead>
-          <th>no</th>
-          <th>Nama Driver</th>
-          <th>Perusahaan</th>
-        </thead>
-        <tbody>
-          <?php 
-          $no = 1;
-          foreach ($driver as $d): ?>
-            <tr>
-              <td><?php echo $no++ ?></td>
-              <td><?php echo $d->nama_pegawai ?></td>
-              <td><?php echo $d->nama_perusahaan ?></td>
-            </tr>
-          <?php endforeach ?>   
-        </tbody>
-      </table>
-    </div>
+<div class="box box-primary">
+  <div class="box-header">
+    <style type="text/css" media="screen">
+      .margin-header{
+        margin-top: 10px;
+        margin-bottom: -20px;
+      }
+    </style>
+    <form action="<?php echo site_url('master/input_merek/') ?>" method="post" accept-charset="utf-8">
+      <div class="col-lg-4 col-md-4 col-xs-12 margin-header">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="merek kendaraan" name="merek" required>
+        </div> 
+      </div>
+      <div class="col-lg-4 col-md-4 col-xs-12 margin-header">
+        <button type="submit" class="btn bg-purple col-lg-4 col-md-4 col-xs-12">Tambah</button>
+      </div>
+    </form>
+  </div>
+  <div class="box-body" style="padding: 22px;">
+    <table id="example2" class="table table-bordered table-hover table-responsive">
+      <thead style="background: #605ca8; color: #ffffff;">
+        <tr>
+          <th>Kode</th>
+          <th>Merek</th>
+          <th class="text-center">#</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($merek as $m): ?>
+          <tr>
+          <td><?php echo $m->id_merek ?></td>
+          <td><?php echo $m->merek ?>
+          </td>
+          <td class="text-center"><a onclick='return confirm("Hapus Data ini?")' href="<?php echo site_url('master/hapus_merek/').$m->id_merek ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+        </tr>
+        <?php endforeach ?>
+      </tbody>
+    </table>
   </div>
 </div>
 
