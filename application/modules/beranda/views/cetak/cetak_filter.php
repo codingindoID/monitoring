@@ -43,42 +43,42 @@
             <td><?php echo date('d F Y',strtotime($start)) ?> <strong style="margin-left: 10px;margin-right: 10px;"> s/d </strong> <?php echo date('d F Y',strtotime($end)) ?></td>
           </tr>
         </table>
-  		</div>
-  		<!-- /.box-header -->
-  		<div class="box-body">
-  			<div class="table-responsive" style="margin: 10px;">
-  				<table id="example1" class="table table-bordered table-striped">
-  					<thead>
-  						<tr>
-  							<th>ID Kunjungan</th>
-  							<th class="text-center">NO-POL</th>
-  							<th class="text-center">Driver</th>
-  							<th class="text-center">Jenis Kunjungan</th>
-  							<th class="text-center">Tanggal Kunjungan</th>
-  							<th class="text-center">Jam Masuk</th>
-  							<th class="text-center">Tanggal Keluar</th>
-  							<th class="text-center">Jam Keluar</th>
-  						</tr>
-  					</thead>
-  					<tbody>
-  						<?php foreach ($kunjungan as $k): ?>
-  							<tr>
-  								<td><?php echo $k->id_kunjungan ?></td>
-  								<td><?php echo $k->no_pol ?></td>
-  								<td><?php echo $k->driver ?></td>
-  								<td><?php echo $k->jenis_kunjungan ?></td>
-  								<td><?php echo date('d-m-Y', strtotime($k->tgl_kunjungan)) ?></td>
-  								<td><?php echo $k->jam_masuk ?></td>
-  								<td><?php echo $k->tgl_keluar==null ? '-' : date('d-m-Y', strtotime($k->tgl_keluar))  ?></td>
-  								<td><?php echo $k->jam_keluar==null ? '-' : $k->jam_keluar?></td>
-  							</tr>
-  						<?php endforeach ?>
-  					</tbody>
-  				</table>
-  			</div>
-  		</div>
-  		<!-- /.box-body -->
-  	</div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+       <div class="table-responsive" style="margin: 10px;">
+        <table id="example1" class="table table-bordered table-striped">
+         <thead>
+          <tr>
+           <th>ID Kunjungan</th>
+           <th class="text-center">NO-POL</th>
+           <th class="text-center">Driver</th>
+           <th class="text-center">Jenis Kunjungan</th>
+           <th class="text-center">Tanggal Kunjungan</th>
+           <th class="text-center">Jam Masuk</th>
+           <th class="text-center">Tanggal Keluar</th>
+           <th class="text-center">Jam Keluar</th>
+         </tr>
+       </thead>
+       <tbody>
+        <?php foreach ($kunjungan as $k): ?>
+         <tr>
+          <td><?php echo $k->id_kunjungan ?></td>
+          <td><?php echo $k->no_pol ?></td>
+          <td><?php echo $k->driver ?></td>
+          <td><?php echo $k->jenis_kunjungan ?></td>
+          <td><?php echo date('d-m-Y', strtotime($k->tgl_kunjungan)) ?></td>
+          <td><?php echo $k->jam_masuk ?></td>
+          <td><?php echo $k->tgl_keluar==null ? '-' : date('d-m-Y', strtotime($k->tgl_keluar))  ?></td>
+          <td><?php echo $k->jam_keluar==null ? '-' : $k->jam_keluar?></td>
+        </tr>
+      <?php endforeach ?>
+    </tbody>
+  </table>
+</div>
+</div>
+<!-- /.box-body -->
+</div>
 
-  </body>
-  </html>
+</body>
+</html>
