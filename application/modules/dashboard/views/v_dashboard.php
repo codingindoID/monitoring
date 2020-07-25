@@ -1,3 +1,12 @@
+  <!-- high chart -->
+    <link rel="stylesheet" href="<?php echo base_url().'assets/highchart/high.css' ?>"/>
+  <script src="<?php echo base_url('assets/highchart/') ?>highcharts.js"></script>
+  <script src="<?php echo base_url('assets/highchart/') ?>series-label.js"></script>
+  <script src="<?php echo base_url('assets/highchart/') ?>exporting.js"></script>
+  <script src="<?php echo base_url('assets/highchart/') ?>export-data.js"></script>
+  <script src="<?php echo base_url('assets/highchart/') ?>accessibility.js"></script>
+  <!-- high chart -->
+
 <div class="box">
   <div class="box-header with-border" data-widget="collapse" style="cursor: pointer;">
     <h3 class="box-title" data-widget="collapse" style="cursor: pointer;font-size: 15px;">Filter Tanggal</h3>
@@ -128,7 +137,7 @@
       type: 'column'
     },
     title: {
-      text: 'Monitoring Keluar Masuk Kendaraan'
+      text: 'Monitoring Keluar Masuk Kendaraan tahun :  '+<?php echo date('Y') ?>
     },
     subtitle: {
       text: 'Data diambil dari rata-rata keluar masuk kendaraan setiap bulan'
@@ -173,12 +182,14 @@
     series: [
     {
       name: 'Rutin',
-      data: [50, 120, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+      data : <?php echo json_encode($chart_rutin) ?>
+      /*data: [50, 120, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]*/
 
     }, 
     {
       name: 'Non Rutin',
-      data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+      data : <?php echo json_encode($chart_non_rutin) ?>
+     /* data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]*/
 
     }
     ]

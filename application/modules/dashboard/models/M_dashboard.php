@@ -21,6 +21,21 @@ class M_dashboard extends CI_Model {
 		return $this->db->get();
 	}
 
+	function bulan()
+	{
+		return $this->db->get('bulan');
+	}
+
+	function get_statistik($tahun,$bulan,$jenis){
+		$where = array(
+			'tahun'				=> $tahun,
+			'bulan'				=> $bulan,
+			'jenis_kunjungan'	=> $jenis
+		);
+
+		return $this->db->get_where('tb_kunjungan', $where);
+	}
+
 }
 
 /* End of file M_dashboard.php */

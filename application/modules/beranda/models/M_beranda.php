@@ -34,6 +34,29 @@ class M_beranda extends CI_Model {
 		$this->db->update('tb_kunjungan', $data);
 	}
 
+	/*get data kendaraan*/
+	function get_data()
+	{
+		$this->db->select('*');
+		$this->db->from('tb_data_kendaraan');
+		$this->db->join('tb_status_kepemilikan', 'tb_status_kepemilikan.id_kepemilikan=tb_data_kendaraan.id_kepemilikan');
+		$this->db->join('tb_perusahaan', 'tb_perusahaan.id_perusahaan = tb_data_kendaraan.perusahaan');
+		$this->db->join('tb_merek', 'tb_merek.id_merek = tb_data_kendaraan.merek');
+		return $this->db->get();
+	}
+
+	/*get data kendaraan by no_pol*/
+	function get_data_by_id($where)
+	{
+		$this->db->select('*');
+		$this->db->from('tb_data_kendaraan');
+		$this->db->join('tb_status_kepemilikan', 'tb_status_kepemilikan.id_kepemilikan=tb_data_kendaraan.id_kepemilikan');
+		$this->db->join('tb_perusahaan', 'tb_perusahaan.id_perusahaan = tb_data_kendaraan.perusahaan');
+		$this->db->join('tb_merek', 'tb_merek.id_merek = tb_data_kendaraan.merek');
+		$this->db->where($where);
+		return $this->db->get();
+	}
+
 }
 
 /* End of file M_beranda.php */

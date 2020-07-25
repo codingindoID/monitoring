@@ -11,11 +11,37 @@
  Target Server Version : 100411
  File Encoding         : 65001
 
- Date: 24/07/2020 21:44:35
+ Date: 25/07/2020 21:37:14
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for bulan
+-- ----------------------------
+DROP TABLE IF EXISTS `bulan`;
+CREATE TABLE `bulan`  (
+  `id_bulan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `bulan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id_bulan`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of bulan
+-- ----------------------------
+INSERT INTO `bulan` VALUES ('01', 'Januari');
+INSERT INTO `bulan` VALUES ('02', 'Februari');
+INSERT INTO `bulan` VALUES ('03', 'Maret');
+INSERT INTO `bulan` VALUES ('04', 'April');
+INSERT INTO `bulan` VALUES ('05', 'Mei');
+INSERT INTO `bulan` VALUES ('06', 'Juni');
+INSERT INTO `bulan` VALUES ('07', 'Juli');
+INSERT INTO `bulan` VALUES ('08', 'Agustus');
+INSERT INTO `bulan` VALUES ('09', 'September');
+INSERT INTO `bulan` VALUES ('10', 'Oktober');
+INSERT INTO `bulan` VALUES ('11', 'November');
+INSERT INTO `bulan` VALUES ('12', 'Desember');
 
 -- ----------------------------
 -- Table structure for tahun
@@ -55,6 +81,13 @@ CREATE TABLE `tb_data_kendaraan`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of tb_data_kendaraan
+-- ----------------------------
+INSERT INTO `tb_data_kendaraan` VALUES ('INV-65f1c1fb5c881e', 'k-5048-fq', 'wawan', '1', '2020-07-25', '2021-08-26', 'mobil', 'MRK-45f1a43e8c1f18', 'brio', 'merah', '1', 'k-5048-fq.png');
+INSERT INTO `tb_data_kendaraan` VALUES ('INV-65f1c2d56b2b27', 'H-6789-KQ', 'Bernard', '1', '2020-07-25', '2022-12-23', 'mobil', 'MRK-45f1a43eacd33d', 'ertiga', 'hijau', '1', 'H-6789-KQ.png');
+INSERT INTO `tb_data_kendaraan` VALUES ('INV-65f1c430cb80a7', 'H-1765-FE', 'DARMAJI', '1', '2020-07-25', '2023-12-27', 'mobil', 'MRK-45f1a43f12c66f', 'Xenia', 'Abu-Abu', '20', 'H-1765-FE.png');
+
+-- ----------------------------
 -- Table structure for tb_jenis_kendaraan
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_jenis_kendaraan`;
@@ -91,18 +124,28 @@ CREATE TABLE `tb_kunjungan`  (
   `jenis_kunjungan` enum('rutin','non_rutin') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT 'non_rutin',
   `driver` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `tgl_keluar` date NULL DEFAULT NULL,
+  `perusahaan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `tahun` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `bulan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id_kunjungan`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_kunjungan
 -- ----------------------------
-INSERT INTO `tb_kunjungan` VALUES ('85f13a868b9a50', 'k-5049-fq', '2020-07-19', '08:56:56', '09:18:23', 'non_rutin', 'wawan', '2020-07-19');
-INSERT INTO `tb_kunjungan` VALUES ('85f13b1df31585', 'K-5122-KQ', '2020-07-19', '09:37:19', '09:37:32', 'non_rutin', 'hermawan', '2020-07-19');
-INSERT INTO `tb_kunjungan` VALUES ('85f13f82d35e2c', 'K-5122-KQ', '2020-07-19', '14:37:17', '14:42:34', 'non_rutin', 'hermawan', '2020-07-19');
-INSERT INTO `tb_kunjungan` VALUES ('85f14021706c79', 'K-5122-KQ', '2020-07-19', '15:19:35', '15:21:08', 'non_rutin', 'hermawan', '2020-07-19');
-INSERT INTO `tb_kunjungan` VALUES ('85f14026ce6e59', 'K-5122-KQ', '2019-07-19', '15:21:00', '15:21:13', 'rutin', 'hermawan', '2020-07-19');
-INSERT INTO `tb_kunjungan` VALUES ('85f1402a7c1b90', 'k-7890-gt', '2008-07-17', '15:21:59', '17:49:33', 'non_rutin', 'setiadi', '2020-07-17');
+INSERT INTO `tb_kunjungan` VALUES ('85f13a868b9a50', 'k-5049-fq', '2020-06-01', '08:56:56', '09:18:23', 'non_rutin', 'wawan', '2020-07-19', NULL, '2020', '06');
+INSERT INTO `tb_kunjungan` VALUES ('85f13b1df31585', 'K-5122-KQ', '2020-05-01', '09:37:19', '09:37:32', 'non_rutin', 'hermawan', '2020-07-19', NULL, '2020', '05');
+INSERT INTO `tb_kunjungan` VALUES ('85f13f82d35e2c', 'K-5122-KQ', '2020-04-01', '14:37:17', '14:42:34', 'non_rutin', 'hermawan', '2020-07-19', NULL, '2020', '04');
+INSERT INTO `tb_kunjungan` VALUES ('85f14021706c79', 'K-5122-KQ', '2020-04-01', '15:19:35', '15:21:08', 'non_rutin', 'hermawan', '2020-07-19', NULL, '2020', '04');
+INSERT INTO `tb_kunjungan` VALUES ('85f14026ce6e59', 'K-5122-KQ', '2019-03-01', '15:21:00', '15:21:13', 'rutin', 'hermawan', '2020-07-19', NULL, '2020', '03');
+INSERT INTO `tb_kunjungan` VALUES ('85f1402a7c1b90', 'k-7890-gt', '2008-07-14', '15:21:59', '17:49:33', 'non_rutin', 'setiadi', '2020-07-17', NULL, '2020', '07');
+INSERT INTO `tb_kunjungan` VALUES ('KUNJ-65f1c30623c434', 'k-5048-fq', '2020-07-25', '20:15:14', '20:16:42', 'rutin', 'wawan', '2020-07-25', NULL, '2020', '07');
+INSERT INTO `tb_kunjungan` VALUES ('KUNJ-65f1c306a36c58', 'H-6789-KQ', '2020-07-25', '20:15:22', '20:16:45', 'rutin', 'Bernard', '2020-07-25', NULL, '2020', '07');
+INSERT INTO `tb_kunjungan` VALUES ('KUNJ-65f1c33841e2eb', 'k-5677-dq', '2020-07-25', '20:28:36', '20:29:01', 'rutin', 'azizah f', '2020-07-25', NULL, '2020', '07');
+INSERT INTO `tb_kunjungan` VALUES ('KUNJ-65f1c3397de771', 'k-5677-dq', '2020-07-25', '20:28:55', '20:29:04', 'non_rutin', 'wawan', '2020-07-25', NULL, '2020', '07');
+INSERT INTO `tb_kunjungan` VALUES ('KUNJ-65f1c35792cba4', 'k-5048-fq', '2020-07-25', '20:36:57', NULL, 'rutin', 'wawan', NULL, NULL, '2020', '07');
+INSERT INTO `tb_kunjungan` VALUES ('KUNJ-65f1c358b976e3', 'k-5677-dq', '2020-07-25', '20:37:15', NULL, 'non_rutin', 'wawan', NULL, NULL, '2020', '07');
+INSERT INTO `tb_kunjungan` VALUES ('KUNJ-65f1c431a07ff5', 'H-1765-FE', '2020-07-25', '21:35:06', NULL, 'rutin', 'DARMAJI', NULL, NULL, '2020', '07');
 
 -- ----------------------------
 -- Table structure for tb_merek

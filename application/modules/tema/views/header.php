@@ -34,12 +34,7 @@
     <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo base_url().'assets/' ?>bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
-  <!-- high chart -->
-  <script src="<?php echo base_url('assets/highchart/') ?>highcharts.js"></script>
-  <script src="<?php echo base_url('assets/highchart/') ?>series-label.js"></script>
-  <script src="<?php echo base_url('assets/highchart/') ?>exporting.js"></script>
-  <script src="<?php echo base_url('assets/highchart/') ?>export-data.js"></script>
-  <script src="<?php echo base_url('assets/highchart/') ?>accessibility.js"></script>
+
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">

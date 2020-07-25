@@ -17,6 +17,7 @@ class Beranda extends MY_Controller {
 			$data['title']		= 'Monitoring';
 			$data['sub']		= 'kunjungan hari ini';
 			$data['icon']		= "fa-exchange";
+			$data['kendaraan']	= $this->M_beranda->get_data()->result();
 			$data['kunjungan']	= $this->M_beranda->get_kunjungan_filter($where)->result();
 			$this->template->load('tema/v_index','v_hari_ini',$data);
 		}else{
@@ -64,6 +65,7 @@ class Beranda extends MY_Controller {
 		}
 	}
 
+	/*AKSI INPUT KUNJUNGAN RUTIN*/
 	public function aksi_input()
 	{
 		$lvl 	= $this->session->userdata('ses_level');
@@ -71,66 +73,63 @@ class Beranda extends MY_Controller {
 		if ($lvl){
 			date_default_timezone_set("Asia/Bangkok");
 			//inisialisasi
-			$id 		= uniqid(8);
-			$lvl 		= $this->session->userdata('ses_level');
-			$np_rut		= $this->input->post('nopol_rutin');
-			$np_non		= $this->input->post('nopol_non');
-			$driver		= $this->input->post('driver');
-			$jam_masuk	= date('H:i:s');
-			$tgl		= date('Y-m-d');
-			//end inisialisasi
+			$where = array(
+				'no_pol' => $this->input->post('no_pol')
+			);
 
-			$jenis = $this->input->post('jenis');
-			if ($jenis=='rutin') {
-				$where = array(
-					'no_pol' 	=> $np_rut
-				);
-				$cek = $this->M_beranda->cek_pengunjung($where)->row();
-				if ($cek) {
-					$data = array(
-						'id_kunjungan'		=> $id,
-						'jam_masuk'			=> $jam_masuk,
-						'tgl_kunjungan'		=> $tgl,
-						'no_pol'			=> $cek->no_pol,
-						'jenis_kunjungan' 	=> 'rutin',
-						'driver'			=> $cek->driver
-					);
-					$cek2 = $this->M_beranda->tambah_kunjungan($data);
-					if (!$cek2) {
-						$this->session->set_flashdata('success','kunjungan ditambahkan');
-						redirect('beranda');
-					}else{
-						$this->session->set_flashdata('warning','ups,ada yang salah');
-						redirect('beranda');
-					}
-				}else{
-					$this->session->set_flashdata('warning','data masukan salah');
-					redirect('beranda','refresh');
-				}
-
-			}else{
-				//kunjungan non rutin
+			$detil = $this->M_beranda->get_data_by_id($where)->row();
+			if ($detil) {
 				$data = array(
-					'id_kunjungan'	=> $id,
-					'jam_masuk'		=> $jam_masuk,
-					'tgl_kunjungan'	=> $tgl,
-					'no_pol' 		=> $np_non,
-					'driver'		=> $driver
+					'id_kunjungan'		=> "KUNJ-".uniqid(6),
+					'no_pol'			=> $detil->no_pol,
+					'tgl_kunjungan'		=> date('Y-m-d'),
+					'jam_masuk'			=> date('H:i:s'),
+					'jenis_kunjungan'	=> $this->input->post('jenis'),
+					'driver'			=> $detil->pemilik,
+					'tahun'				=> date('Y'),
+					'bulan'				=> date('m')
 				);
-				$cek = $this->M_beranda->tambah_kunjungan($data);
-				if (!$cek) {
-					$this->session->set_flashdata('success','kunjungan ditambahkan');
-					redirect('beranda');
-				}else{
-					$this->session->set_flashdata('warning','ups,ada yang salah');
-					redirect('beranda');
-				}
+			}else{
+				$data = array(
+					'id_kunjungan'		=> "KUNJ-".uniqid(6),
+					'no_pol'			=> $this->input->post('no_pol'),
+					'tgl_kunjungan'		=> date('Y-m-d'),
+					'jam_masuk'			=> date('H:i:s'),
+					'jenis_kunjungan'	=> $this->input->post('jenis'),
+					'driver'			=> $this->input->post('pemilik'),
+					'tahun'				=> date('Y'),
+					'bulan'				=> date('m')
+				);
 			}
 			
+			$cek2 = $this->M_beranda->tambah_kunjungan($data);
+			if (!$cek2) {
+				$this->session->set_flashdata('success','kunjungan ditambahkan');
+				redirect('beranda');
+			}else{
+				$this->session->set_flashdata('warning','ups,ada yang salah');
+				redirect('beranda');
+			}
+		} else{
+			redirect('login','refresh');
+		}
+
+	}
+
+	//detail data kendaraan
+	function detil_kendaraan($id)
+	{
+		$lvl 	= $this->session->userdata('ses_level');
+		if ($lvl){
+			$where = array(
+				'no_pol' => $id
+			);
+
+			$data = $this->M_beranda->get_data_by_id($where)->row();
+			echo json_encode($data);
 		}else{
 			redirect('login','refresh');
 		}
-		
 	}
 
 
