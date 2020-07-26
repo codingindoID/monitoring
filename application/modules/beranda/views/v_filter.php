@@ -127,7 +127,7 @@
           <h4 class="modal-title">ID Kunjungan : <span id="id_kunjungan_keluar"></span></h4>
         </div>
         <div class="modal-body">
-          <form action="<?php echo site_url('beranda/aksi_keluar') ?>" method="post">
+          <form action="<?php echo site_url('beranda/aksi_keluar_from_filter') ?>" method="post">
             <div id="non" style="margin-top: 5px;">
               <input type="text" name="id_kunjungan" id="id_form_kunjungan" hidden>
               <div class="form-group">
@@ -148,7 +148,8 @@
                 <input class="form-control" type="text" disabled id="masuk_keluar">
               </div>
             </div>
-
+            <input type="date" hidden name="startdate" value="<?php echo $start ?>">
+            <input type="date" hidden name="enddate" value="<?php echo $end ?>">
           </div>
           <div class="modal-footer">
             <input type="submit" class="col-lg-12 btn btn-danger" value="selesai kunjungan">

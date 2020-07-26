@@ -69,10 +69,10 @@
     <div class="col-lg-9 col-md-9 col-xs-12">
 
       <div class="box" style="padding: 5px;">
-<!--         <span style="margin-left: 10px;">Filter</span>
-        <select class="form-group" style="width:100px;margin-left: 10px;" onchange="alert('ok')">
-         <?php foreach ($tahun as $tahun): ?>
-            <option value="<?php echo $tahun->tahun ?>"><?php echo $tahun->tahun ?></option>
+        <!-- <span style="margin-left: 10px;">Filter</span>
+        <select class="form-group" style="width:100px;margin-left: 10px;" onchange="tahun('ok')">
+         <?php foreach ($filter_tahun as $f): ?>
+            <option value="<?php echo $f->tahun ?>" <?php echo date('Y')==$f->tahun ? 'selected' : '' ?>><?php echo $f->tahun ?></option>
           <?php endforeach ?> 
         </select> -->
         <figure class="highcharts-figure">
@@ -183,13 +183,11 @@
     {
       name: 'Rutin',
       data : <?php echo json_encode($chart_rutin) ?>
-      /*data: [50, 120, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]*/
-
+     
     }, 
     {
       name: 'Non Rutin',
       data : <?php echo json_encode($chart_non_rutin) ?>
-     /* data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]*/
 
     }
     ]

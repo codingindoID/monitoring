@@ -57,6 +57,16 @@ class M_beranda extends CI_Model {
 		return $this->db->get();
 	}
 
+	/*cek apakah ada no-pol yang sudah masuk dan belum keluar*/
+	function cek_no_pol($where)
+	{
+		$this->db->select('*');
+		$this->db->from('tb_kunjungan');
+		$this->db->where($where);
+		$this->db->where('tb_kunjungan.jam_keluar', null);
+		return $this->db->get();
+	}
+
 }
 
 /* End of file M_beranda.php */

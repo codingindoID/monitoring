@@ -26,6 +26,12 @@ class M_dashboard extends CI_Model {
 		return $this->db->get('bulan');
 	}
 
+	function tahun()
+	{
+		return $this->db->get('tahun');
+	}
+
+
 	function get_statistik($tahun,$bulan,$jenis){
 		$where = array(
 			'tahun'				=> $tahun,

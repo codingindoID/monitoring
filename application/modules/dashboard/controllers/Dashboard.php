@@ -22,6 +22,7 @@ class Dashboard extends MY_Controller {
 			$data['total']	= $this->M_dashboard->get_kunjungan_filter($queri)->num_rows();
 			$data['rutin']	= $this->M_dashboard->get_kunjungan_status($queri,'rutin')->num_rows();
 			$data['non']	= $this->M_dashboard->get_kunjungan_status($queri,'non_rutin')->num_rows();
+			$data['filter_tahun']	= $this->M_dashboard->tahun()->result();
 			//echo $queri;
 
 			$bulan = $this->M_dashboard->bulan()->result();
@@ -42,6 +43,7 @@ class Dashboard extends MY_Controller {
 			}
 			$data['chart_rutin'] 		= array_column($rutin, 'hasil');
 			$data['chart_non_rutin'] 	= array_column($non_rutin, 'hasil');
+			$data['tahun']				= date('Y');
 			//echo json_encode($data);
 			$this->template->load('tema/v_index','v_dashboard',$data);
 		}else{
@@ -68,9 +70,10 @@ class Dashboard extends MY_Controller {
 			$data['start']		= $start;
 			$data['end']		= $end;
 
-			$data['total']	= $this->M_dashboard->get_kunjungan_filter($queri)->num_rows();
-			$data['rutin']	= $this->M_dashboard->get_kunjungan_status($queri,'rutin')->num_rows();
-			$data['non']	= $this->M_dashboard->get_kunjungan_status($queri,'non_rutin')->num_rows();
+			$data['total']			= $this->M_dashboard->get_kunjungan_filter($queri)->num_rows();
+			$data['rutin']			= $this->M_dashboard->get_kunjungan_status($queri,'rutin')->num_rows();
+			$data['non']			= $this->M_dashboard->get_kunjungan_status($queri,'non_rutin')->num_rows();
+			$data['filter_tahun']	= $this->M_dashboard->tahun()->result();
 			//echo $queri;
 			$bulan = $this->M_dashboard->bulan()->result();
 			$no = 0;

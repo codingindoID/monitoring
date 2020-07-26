@@ -167,7 +167,7 @@ class Master extends MY_Controller {
 			$cek = $this->M_master->get_data_by_id($id)->num_rows();
 
 			if($cek){
-				$this->session->set_flashdata('error','ups, nomor polisi :'.$this->input->post('nopol').' ,udah terdaftar,.');
+				$this->session->set_flashdata('error','ups, nomor polisi :'.$this->input->post('nopol').' ,sudah terdaftar,.');
 				redirect('master/data_kendaraan','refresh');
 			}else{
 				/*config QR-CODE*/
