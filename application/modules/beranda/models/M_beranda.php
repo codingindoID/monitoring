@@ -4,7 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_beranda extends CI_Model {
 
 	function get_kunjungan_filter($where){
-		$this->db->order_by('tgl_kunjungan', 'asc');
 		return $this->db->get_where('tb_kunjungan', $where);
 	}
 

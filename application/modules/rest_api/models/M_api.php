@@ -28,6 +28,13 @@ class M_api extends CI_Model {
 		$this->db->insert('tb_kunjungan', $data);
 	}	
 
+	/*aksi keluar/selesai kunjungan*/
+	function keluar($where, $data)
+	{
+		$this->db->where($where);
+		$this->db->update('tb_kunjungan', $data);
+	}
+
 }
 
 /* End of file M_api.php */
