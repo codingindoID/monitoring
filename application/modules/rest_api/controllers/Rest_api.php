@@ -83,6 +83,7 @@ class Rest_api extends MY_Controller {
 	/*scan barcode masuk ataupun keluar jadi satu*/
 	function scan_barcode()
 	{
+		date_default_timezone_set("Asia/Bangkok");
 		$where = array(
 			'no_pol' => $this->input->post('no_pol')
 		);
@@ -91,7 +92,6 @@ class Rest_api extends MY_Controller {
 		$cek_data = $this->M_api->cek_no_pol($where)->row();
 		if($cek_data){
 			/*jika data ada maka aksi yang dilakukan adalah penyelesaian kunjungan*/
-			date_default_timezone_set("Asia/Bangkok");
 			$where = array(
 				'id_kunjungan'	=> $cek_data->id_kunjungan
 			);
@@ -128,10 +128,13 @@ class Rest_api extends MY_Controller {
 				'tahun'				=> date('Y'),
 				'bulan'				=> date('m')
 			);
+
 			$cek2 = $this->M_api->tambah_kunjungan($data);
 			if (!$cek2) {
 				echo json_encode(array(
-					'success'	=> 1,
+					'success'	=> 2,
+					'no_pol'	=> $detil->no_pol,
+					'pemilik'	=> $detil->pemilik,
 					'message'	=> 'kendaraan dengan nomor polisi '. $this->input->post('no_pol').', diijinkan Masuk.'
 				));
 			}else{
@@ -193,6 +196,7 @@ class Rest_api extends MY_Controller {
 	/*menangkap inputan aksi masuk dari inputan manual*/
 	public function aksi_masuk_manual()
 	{
+		date_default_timezone_set("Asia/Bangkok");
 		$data = array(
 			'no_pol'			=> $this->input->post('no_pol'),
 			'driver'			=> $this->input->post('driver'),

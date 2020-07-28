@@ -9,6 +9,7 @@ class Beranda extends MY_Controller {
 	}
 	public function index()
 	{
+		date_default_timezone_set("Asia/Bangkok");
 		if ($this->session->userdata('ses_username')) {
 			$where = array(
 				'tgl_kunjungan'	=> date('Y-m-d')
@@ -19,6 +20,7 @@ class Beranda extends MY_Controller {
 			$data['icon']		= "fa-exchange";
 			$data['kendaraan']	= $this->M_beranda->get_data()->result();
 			$data['kunjungan']	= $this->M_beranda->get_kunjungan_filter($where)->result();
+			//echo json_encode($data);
 			$this->template->load('tema/v_index','v_hari_ini',$data);
 		}else{
 			redirect('login','refresh');
@@ -27,6 +29,7 @@ class Beranda extends MY_Controller {
 
 	public function filter()
 	{
+		date_default_timezone_set("Asia/Bangkok");
 		if ($this->session->userdata('ses_username')) {
 			$data['title']		= 'Filter';
 			$data['sub']		= '';
@@ -42,6 +45,7 @@ class Beranda extends MY_Controller {
 
 	public function filter_on()
 	{
+		date_default_timezone_set("Asia/Bangkok");
 		if ($this->session->userdata('ses_username')) {
 			$st_q 		=  $this->input->post('startdate');
 			$start 		= date('Y-m-d',strtotime($st_q)) ;
@@ -68,6 +72,7 @@ class Beranda extends MY_Controller {
 	/*melakukan filter melaui halaman filter*/
 	public function filter_on_from_filter($st_q,$end_q)
 	{
+		date_default_timezone_set("Asia/Bangkok");
 		if ($this->session->userdata('ses_username')) {
 			$start 		= date('Y-m-d',strtotime($st_q)) ;
 
@@ -92,6 +97,7 @@ class Beranda extends MY_Controller {
 	/*AKSI INPUT KUNJUNGAN RUTIN*/
 	public function aksi_input()
 	{
+		date_default_timezone_set("Asia/Bangkok");
 		$lvl 	= $this->session->userdata('ses_level');
 
 		if ($lvl){
