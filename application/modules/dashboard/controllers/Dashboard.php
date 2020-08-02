@@ -109,7 +109,7 @@ class Dashboard extends MY_Controller {
 			$data['start']		= date('Y').'-01-01';
 			$data['end']		= date('Y-m-d');
 			$queri	 			= "tgl_kunjungan between '".date('Y')."-01-01' and '".date('Y-m-d')."'";
-			$data['kunjungan']			= $this->M_dashboard->get_kunjungan_rutin($queri,'rutin')->result();
+			$data['kunjungan']	= $this->M_dashboard->get_kunjungan_status($queri,'rutin')->result();
 			//echo json_encode($data);
 			$this->template->load('tema/v_index','v_rutin',$data);
 		}else{
@@ -127,7 +127,7 @@ class Dashboard extends MY_Controller {
 			$data['start']		= date('Y').'-01-01';
 			$data['end']		= date('Y-m-d');
 			$queri	 			= "tgl_kunjungan between '".date('Y')."-01-01' and '".date('Y-m-d')."'";
-			$data['kunjungan']			= $this->M_dashboard->get_kunjungan_non_rutin($queri,'non_rutin')->result();
+			$data['kunjungan']	= $this->M_dashboard->get_kunjungan_status($queri,'non_rutin')->result();
 
 			$this->template->load('tema/v_index','v_non_rutin',$data);
 		}else{

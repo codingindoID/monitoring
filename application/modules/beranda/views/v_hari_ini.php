@@ -29,6 +29,7 @@
             <th>ID Kunjungan</th>
             <th class="text-center">NO-POL</th>
             <th class="text-center">Driver</th>
+            <th class="text-center">Perusahaan</th>
             <th class="text-center">Jenis Kunjungan</th>
             <th class="text-center">Tanggal Kunjungan</th>
             <th class="text-center">Jam Masuk</th>
@@ -43,6 +44,7 @@
              <td><?php echo $k->id_kunjungan ?></td>
              <td><?php echo $k->no_pol ?></td>
              <td><?php echo $k->driver ?></td>
+             <td><?php echo $k->perusahaan ?></td>
              <td><?php echo $k->jenis_kunjungan ?></td>
              <td><?php echo date('d-m-Y', strtotime($k->tgl_kunjungan)) ?></td>
              <td><?php echo $k->jam_masuk ?></td>

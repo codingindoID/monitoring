@@ -35,7 +35,7 @@
               <td style="word-break:break-all;" width="10%" class="text-center"><a target="_blank" href="<?php echo base_url('assets/image/qr_code/').$k->qr_code ?>"><img class="img_qr" src="<?php  echo base_url().'assets/image/qr_code/'.$k->qr_code ?>"></a></td>
               <td><?php  echo $k->no_pol ?></td>
               <td><?php  echo $k->pemilik ?></td>
-              <td><?php  echo $k->nama_perusahaan ?></td>
+              <td><?php  echo $k->perusahaan ?></td>
               <td><?php  echo $k->jenis ?></td>
               <td><?php  echo $k->merek ?></td>
               <td><?php  echo $k->seri ?></td>
@@ -78,7 +78,7 @@
                <?php 
                $no = 1;
                foreach ($perusahaan as $p): ?>
-                 <option value="<?php echo $p->id_perusahaan ?>"><?php echo $p->nama_perusahaan ?></option>
+                 <option value="<?php echo $p->nama_perusahaan ?>"><?php echo $p->nama_perusahaan ?></option>
                <?php endforeach ?>
              </select>
            </div>

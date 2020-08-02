@@ -8,7 +8,6 @@ class M_api extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('tb_data_kendaraan');
 		$this->db->join('tb_status_kepemilikan', 'tb_status_kepemilikan.id_kepemilikan=tb_data_kendaraan.id_kepemilikan');
-		$this->db->join('tb_perusahaan', 'tb_perusahaan.id_perusahaan = tb_data_kendaraan.perusahaan');
 		$this->db->join('tb_merek', 'tb_merek.id_merek = tb_data_kendaraan.merek');
 		$this->db->where($where);
 		return $this->db->get();

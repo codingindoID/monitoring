@@ -90,7 +90,7 @@
              <td><?php echo $k->id_kunjungan ?></td>
              <td><?php echo $k->no_pol ?></td>
              <td><?php echo $k->driver ?></td>
-             <td><?php echo $k->nama_perusahaan ?></td>
+             <td><?php echo $k->perusahaan ?></td>
              <td><?php echo date('d-m-Y', strtotime($k->tgl_kunjungan)) ?></td>
              <td><?php echo $k->jam_masuk ?></td>
              <td><?php echo $k->tgl_keluar==null ? '-' : date('d-m-Y', strtotime($k->tgl_keluar))  ?></td>
