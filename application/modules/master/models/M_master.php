@@ -52,6 +52,19 @@ class M_master extends CI_Model {
 		$this->db->update('tb_data_kendaraan', $data);
 	}
 
+	function update_kunjungan($no_pol,$perusahaan)
+	{
+		$where = array(
+			'no_pol'	=> $no_pol,
+		);
+		$data = array(
+			'perusahaan'	=> $perusahaan
+		);
+
+		$this->db->where($where);
+		$this->db->update('tb_kunjungan', $data);
+	}
+
 	function get_data()
 	{
 		$this->db->select('*');

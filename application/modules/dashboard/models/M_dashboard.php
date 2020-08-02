@@ -21,6 +21,34 @@ class M_dashboard extends CI_Model {
 		return $this->db->get();
 	}
 
+	function get_kunjungan_rutin($where,$status){
+		$where2 = array(
+			'jenis_kunjungan'	=> $status
+		);
+
+		$this->db->select('*');
+		$this->db->from('tb_kunjungan');
+		$this->db->join('tb_perusahaan', 'tb_perusahaan.id_perusahaan = tb_kunjungan.perusahaan');
+		$this->db->where($where);
+		$this->db->where($where2);
+		$this->db->order_by('tgl_kunjungan', 'asc');
+		return $this->db->get();
+	}
+
+
+	function get_kunjungan_non_rutin($where,$status){
+		$where2 = array(
+			'jenis_kunjungan'	=> $status
+		);
+
+		$this->db->select('*');
+		$this->db->from('tb_kunjungan');
+		$this->db->where($where);
+		$this->db->where($where2);
+		$this->db->order_by('tgl_kunjungan', 'asc');
+		return $this->db->get();
+	}
+
 	function bulan()
 	{
 		return $this->db->get('bulan');

@@ -35,8 +35,11 @@ class Beranda extends MY_Controller {
 			$data['sub']		= '';
 			$data['kunjungan']	= null;
 			$data['icon']		= "fa-filter";
-			$data['start']		= null;
-			$data['end']		= null;
+			$data['start']		= date('Y').'-01-01';
+			$data['end']		= date('Y-m-d');
+
+			$queri	 			= "tgl_kunjungan between '".date('Y')."-01-01' and '".date('Y-m-d')."'";
+			$data['kunjungan']	= $this->M_beranda->get_kunjungan_filter($queri)->result();
 			$this->template->load('tema/v_index','v_filter',$data);
 		}else{
 			redirect('login','refresh');
@@ -122,6 +125,7 @@ class Beranda extends MY_Controller {
 						'jam_masuk'			=> date('H:i:s'),
 						'jenis_kunjungan'	=> $this->input->post('jenis'),
 						'driver'			=> $detil->pemilik,
+						'perusahaan'		=> $detil->perusahaan,
 						'tahun'				=> date('Y'),
 						'bulan'				=> date('m')
 					);
@@ -133,6 +137,7 @@ class Beranda extends MY_Controller {
 						'jam_masuk'			=> date('H:i:s'),
 						'jenis_kunjungan'	=> $this->input->post('jenis'),
 						'driver'			=> $this->input->post('pemilik'),
+						'perusahaan'		=> $this->input->post('perusahaan'),
 						'tahun'				=> date('Y'),
 						'bulan'				=> date('m')
 					);

@@ -1,67 +1,7 @@
-<style type="text/css">
-  .img_qr{
-    width: 50% ;
-    height:  auto ;
-  }
-</style>
 <div class="box">
-<!--   <div class="box-header">
-    <div class="btn-group">
-      <a href="#" class="btn bg-purple" data-toggle="modal" data-target="#modaladd"><i class="fa fa-plus"></i> Tambah</a>
-      <a href="#" class="btn btn-success"><i class="fa fa-print"></i> Cetak</a>
-    </div>
-  </div> -->
-  <div class="box-body">
-    <div class="table-responsive">
-      <table id="tb4" class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>Kode</th>
-            <th class="text-center">QR CODE</th>
-            <th>No-Pol</th>
-            <th>Driver</th>
-            <th>Perusahaan</th>
-            <th>Jenis</th>
-            <th>Merek</th>
-            <th>Seri</th>
-            <th>DateReg</th>
-            <th>DateExp</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php foreach ($kendaraan as $k): ?>
-            <tr>
-              <td><a href="<?php echo site_url('master/edit_kendaraan/').$k->id_data ?>"><?php  echo $k->id_data ?></a></td>
-              <td style="word-break:break-all;" width="10%" class="text-center"><a target="_blank" href="<?php echo base_url('assets/image/qr_code/').$k->qr_code ?>"><img class="img_qr" src="<?php  echo base_url().'assets/image/qr_code/'.$k->qr_code ?>"></a></td>
-              <td><?php  echo $k->no_pol ?></td>
-              <td><?php  echo $k->pemilik ?></td>
-              <td><?php  echo $k->nama_perusahaan ?></td>
-              <td><?php  echo $k->jenis ?></td>
-              <td><?php  echo $k->merek ?></td>
-              <td><?php  echo $k->seri ?></td>
-              <td><?php  echo date('d-m-Y',strtotime($k->tgl_teregistrasi)) ?></td>
-              <td><?php  echo date('d-m-Y',strtotime($k->tgl_kadaluwarsa)) ?></td>
-            </tr>
-          <?php endforeach ?>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-</div>
-
-
-<!-- MODAL -->
-<div class="modal fade" id="modaladd">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Tambah Data Kendaraan</span></h4>
-        </div>
-        <div class="modal-body">
-          <form role="form" method="post" action="<?php echo site_url('master/input_data_kendaraan/') ?>">
+	<div class="box-header"></div>
+	<div class="box-body">
+		<form role="form" method="post" action="<?php echo site_url('master/input_data_kendaraan/') ?>">
             <div class="form-group">
              <div class="form-group col-xs-6">
               <label>Nomor Polisi</label>
@@ -132,11 +72,5 @@
         <button type="submit" class="btn bg-purple col-xs-12" style="margin-top: 10px;"><i class="fa fa-save"></i> Simpan</button>
       </div>
     </form>
-  </div>
+	</div>
 </div>
-</div>
-</div>
-
-<script type="text/javascript">
-  document.getElementById('menu_master').setAttribute("style", "display : block");
-</script>

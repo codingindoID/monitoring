@@ -168,6 +168,10 @@
             <label>Driver/pemilik</label>
             <input type="text" class="form-control" placeholder="Driver/pemilik" id="pemilik" name="pemilik">
           </div> 
+          <div class="form-group">
+            <label>Perusahaan</label>
+            <input type="text" class="form-control" placeholder="Perusahaan" id="pemilik" name="perusahaan">
+          </div> 
         </div>
         <input type="text" name="jenis" value="non_rutin" hidden>
         <!-- end body -->

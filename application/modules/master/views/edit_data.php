@@ -5,7 +5,8 @@
 				<input type="text" name="id_data" value="<?php echo $kendaraan->id_data ?>" hidden>
 				<div class="form-group col-xs-6">
 					<label>Nomor Polisi</label>
-					<input value="<?php echo $kendaraan->no_pol ?>" type="text" class="form-control" placeholder="Nomor Polisi" name="nopol" disabled >
+					<input value="<?php echo $kendaraan->no_pol ?>" type="text" class="form-control" placeholder="Nomor Polisi"  disabled >
+					<input value="<?php echo $kendaraan->no_pol ?>" type="text" hidden name="nopol"  >
 				</div> 
 				<div class="form-group col-xs-6">
 					<label>Pemilik / Driver</label>

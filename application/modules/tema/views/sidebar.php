@@ -28,10 +28,10 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header" style="color:black">MENU UTAMA</li>
       <li>
-          <a href="<?php echo site_url('dashboard') ?>">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-          </a>
-        </li>
+        <a href="<?php echo site_url('dashboard') ?>">
+          <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+        </a>
+      </li>
       <li class="treeview">
         <a href="#">
           <i class="fa fa-home fa-black"></i>
@@ -42,23 +42,28 @@
           <li><a href="<?php echo site_url('beranda/filter') ?>"><i class="fa fa-filter"></i>filter</a></li>
         </ul>
       </li>
+      <li>
+        <a href="<?php echo site_url('master/form_input_kendaraan') ?>">
+          <i class="fa fa-check"></i> <span>Register</span>
+        </a>
+      </li>
 
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header" style="color:black">ADMIN</li>
-        <!-- <li>
-          <a href="<?php echo site_url('pengunjung') ?>">
-            <i class="fa fa-car"></i> <span>Pengunjung Rutin</span>
-          </a>
-        </li> -->
       </ul>
-       <li class="treeview">
+      <li>
+        <a href="<?php echo site_url('#') ?>">
+          <i class="fa fa-print"></i> <span>Cetak VGP</span>
+        </a>
+      </li>
+      <li class="treeview">
         <a href="#">
           <i class="fa fa-gear fa-black"></i>
           <span>Master</span>
         </a>
         <ul id="menu_master" class="treeview-menu">
           <li><a href="<?php echo site_url('master/perusahaan/') ?>"><i class="fa fa-industry"></i>Master Data Perusahaan</a></li>
-<!--           <li><a href="<?php echo site_url('master/driver/') ?>"><i class="fa fa-user"></i>Master Data Driver</a></li> -->
+          <!--           <li><a href="<?php echo site_url('master/driver/') ?>"><i class="fa fa-user"></i>Master Data Driver</a></li> -->
           <li><a href="<?php echo site_url('master/merek/') ?>"><i class="fa fa-car"></i>Master Merek Kendaraan</a></li>
           <li><a href="<?php echo site_url('master/data_kendaraan/') ?>"><i class="fa fa-tasks"></i>Master Data Kendaraan</a></li>
         </ul>

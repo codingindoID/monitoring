@@ -47,6 +47,14 @@
 
 <!-- ChartJS -->
 <script src="<?php echo base_url().'assets/'?>bower_components/chart.js/Chart.js"></script>
+<!-- button -->
+<script src="<?php echo base_url().'assets/bt_datatable/'?>dataTables.buttons.min.js"></script>
+<script src="<?php echo base_url().'assets/bt_datatable/'?>buttons.flash.min.js"></script>
+<script src="<?php echo base_url().'assets/bt_datatable/'?>jszip.min.js"></script>
+<script src="<?php echo base_url().'assets/bt_datatable/'?>pdfmake.min.js"></script>
+<script src="<?php echo base_url().'assets/bt_datatable/'?>vfs_fonts.js"></script>
+<script src="<?php echo base_url().'assets/bt_datatable/'?>buttons.html5.min.js"></script>
+<script src="<?php echo base_url().'assets/bt_datatable/'?>buttons.print.min.js"></script>
 
 </body>
 </html>
@@ -65,6 +73,7 @@
     })
     $('#example3').DataTable({
       dom: 'Bfrtip',
+      scrollY:550,
       columnDefs: [
       {
         targets: 2,
@@ -82,13 +91,18 @@
       buttons: [
       {
         extend: 'excel',
-        title: '<?php echo "Rekap ".$title." ".$sub ?>',
+        title: '<?php echo $sub ?>',
+        exportOptions:{
+          columns:[0,1,2,3,4,5,6,7]
+        },
       },
       {
         extend: 'print',
-
+        exportOptions:{
+          columns:[0,1,2,3,4,5,6,7]
+        },
         title: function() {
-          return "<div style='font-size: 20px;'><Strong><center><?php echo "Rekap ".$title." ".$sub ?></center></strong></div>";
+          return "<div style='font-size: 20px;'><Strong><center><?php echo $sub ?></center></strong></div>";
         } ,
         customize: function ( win ) {
           $(win.document.body)
@@ -100,8 +114,11 @@
       },
       {
         extend: 'pdf',
+        exportOptions:{
+          columns:[0,1,2,3,4,5,6,7]
+        },
         download : 'open',
-        title: "<?php echo "Rekap ".$title." ".$sub ?>" ,
+        title: "<?php echo $sub ?>" ,
         pageSize : 'legal',
         orientation : 'landscape',
         customize: function (doc) {
@@ -111,6 +128,76 @@
       }
       ]
     })
+    $('#tb4').DataTable({
+      dom: 'Bfrtip',
+      scrollY:550,
+      columnDefs: [
+      {
+        targets: 2,
+        className: 'dt-body-center'
+      },
+      {
+        targets: 3,
+        className: 'dt-body-center'
+      },
+      {
+        targets: 4,
+        className: 'dt-body-center'
+      },
+      {
+        targets: 5,
+        className: 'dt-body-center'
+      },
+      {
+        targets: 6,
+        className: 'dt-body-center'
+      },
+      {
+        targets: 7,
+        className: 'dt-body-center'
+      }
+      ],
+      buttons: [
+      {
+        extend: 'excel',
+        title: '<?php echo $sub ?>',
+        exportOptions:{
+          columns:[0,2,3,4,5,6,7]
+        },
+      },
+      {
+        extend: 'print',
+        exportOptions:{
+          columns:[0,2,3,4,5,6,7]
+        },
+        title: function() {
+          return "<div style='font-size: 20px;'><Strong><center><?php echo $sub ?></center></strong></div>";
+        } ,
+        customize: function ( win ) {
+          $(win.document.body)
+          .css( 'font-size', '10pt' );
+          $(win.document.body).find( 'table' )
+          .addClass( 'compact' )
+          .css( 'font-size', 'inherit' );
+        }
+      },
+      {
+        extend: 'pdf',
+        exportOptions:{
+          columns:[0,2,3,4,5,6,7]
+        },
+        download : 'open',
+        title: "<?php echo $sub ?>" ,
+        pageSize : 'legal',
+        orientation : 'landscape',
+        customize: function (doc) {
+          doc.content[1].table.widths = 
+          Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+        }
+      }
+      ]
+    })
+    
     
     //Date picker
     $('#datepicker').datepicker({

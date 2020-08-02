@@ -15,10 +15,10 @@ class Dashboard extends MY_Controller {
 			$data['title']		= 'Dashboard';
 			$data['sub']		= ' ';
 			$data['icon']		= "fa-dashboard";
-			$data['start']		= '2020-01-01';
+			$data['start']		= date('Y').'-01-01';
 			$data['end']		= date('Y-m-d');
 
-			$queri	 	= "tgl_kunjungan between '2020-01-01' and '".date('Y-m-d')."'";
+			$queri	 	= "tgl_kunjungan between '".date('Y')."-01-01' and '".date('Y-m-d')."'";
 			$data['total']	= $this->M_dashboard->get_kunjungan_filter($queri)->num_rows();
 			$data['rutin']	= $this->M_dashboard->get_kunjungan_status($queri,'rutin')->num_rows();
 			$data['non']	= $this->M_dashboard->get_kunjungan_status($queri,'non_rutin')->num_rows();
@@ -94,6 +94,42 @@ class Dashboard extends MY_Controller {
 			$data['chart_rutin'] 		= array_column($rutin, 'hasil');
 			$data['chart_non_rutin'] 	= array_column($non_rutin, 'hasil');
 			$this->template->load('tema/v_index','v_dashboard',$data);
+		}else{
+			redirect('login','refresh');
+		}
+	}
+
+	function rutin()
+	{
+		$lvl 	= $this->session->userdata('ses_level');
+		if ($lvl){
+			$data['title']		= 'Dashboard';
+			$data['sub']		= 'rekap kunjungan rutin';
+			$data['icon']		= "fa-dashboard";
+			$data['start']		= date('Y').'-01-01';
+			$data['end']		= date('Y-m-d');
+			$queri	 			= "tgl_kunjungan between '".date('Y')."-01-01' and '".date('Y-m-d')."'";
+			$data['kunjungan']			= $this->M_dashboard->get_kunjungan_rutin($queri,'rutin')->result();
+			//echo json_encode($data);
+			$this->template->load('tema/v_index','v_rutin',$data);
+		}else{
+			redirect('login','refresh');
+		}
+	}
+
+	function non_rutin()
+	{
+		$lvl 	= $this->session->userdata('ses_level');
+		if ($lvl){
+			$data['title']		= 'Dashboard';
+			$data['sub']		= 'rekap kunjungan non rutin';
+			$data['icon']		= "fa-dashboard";
+			$data['start']		= date('Y').'-01-01';
+			$data['end']		= date('Y-m-d');
+			$queri	 			= "tgl_kunjungan between '".date('Y')."-01-01' and '".date('Y-m-d')."'";
+			$data['kunjungan']			= $this->M_dashboard->get_kunjungan_non_rutin($queri,'non_rutin')->result();
+
+			$this->template->load('tema/v_index','v_non_rutin',$data);
 		}else{
 			redirect('login','refresh');
 		}

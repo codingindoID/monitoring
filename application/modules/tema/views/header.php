@@ -34,7 +34,9 @@
     <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo base_url().'assets/' ?>bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
-
+   <!-- datatable button -->
+   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">

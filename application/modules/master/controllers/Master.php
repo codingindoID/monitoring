@@ -144,13 +144,30 @@ class Master extends MY_Controller {
 		$lvl = $this->session->userdata('ses_level');
 		if($lvl){
 			$data['title']			= 'Master';
-			$data['sub']			= 'data kendaraan';
+			$data['sub']			= 'Rekap data kendaraan';
 			$data['icon']			= "fa-car";
 			$data['perusahaan']		= $this->M_master->get_perusahaan()->result();
 			$data['merek']			= $this->M_master->get_merek()->result();
 			$data['kendaraan']		= $this->M_master->get_data()->result();
 			//echo json_encode($data);
 			$this->template->load('tema/v_index','master_data_kendaraan',$data);
+		}else{
+			redirect('login','refresh');
+		}
+	}
+
+	function form_input_kendaraan()
+	{
+		$lvl = $this->session->userdata('ses_level');
+		if($lvl){
+			$data['title']			= 'Master';
+			$data['sub']			= 'data kendaraan';
+			$data['icon']			= "fa-car";
+			$data['perusahaan']		= $this->M_master->get_perusahaan()->result();
+			$data['merek']			= $this->M_master->get_merek()->result();
+			$data['kendaraan']		= $this->M_master->get_data()->result();
+			//echo json_encode($data);
+			$this->template->load('tema/v_index','form_register',$data);
 		}else{
 			redirect('login','refresh');
 		}
@@ -280,6 +297,7 @@ class Master extends MY_Controller {
     		);
     		$cek = $this->M_master->update_data_kendaraan($where, $data);
     		if (!$cek) {
+    			$this->M_master->update_kunjungan($this->input->post('nopol'),$this->input->post('perusahaan'));
     			$this->session->set_flashdata('success','Data berhasil diupdate');
     			redirect('master/data_kendaraan','refresh');
     		}else{
@@ -300,14 +318,26 @@ class Master extends MY_Controller {
     			'id_data' => $id
     		); 
     		$cek = $this->M_master->hapus($where,'tb_data_kendaraan');
-			if (!$cek) {
-				$this->session->set_flashdata('success','Data Berhasil Dihapus');
-				redirect('master/data_kendaraan','refresh');
-			}else{
-				$this->session->set_flashdata('error','ups, ada yang salah,.');
-				redirect('master/data_kendaraan','refresh');
-			}
+    		if (!$cek) {
+    			$this->session->set_flashdata('success','Data Berhasil Dihapus');
+    			redirect('master/data_kendaraan','refresh');
+    		}else{
+    			$this->session->set_flashdata('error','ups, ada yang salah,.');
+    			redirect('master/data_kendaraan','refresh');
+    		}
 
+    	}else{
+    		redirect('login','refresh');
+    	}
+    }
+
+    //cetak
+    function cetak_all()
+    {
+    	$lvl = $this->session->userdata('ses_level');
+    	if($lvl){
+    		$data['kendaraan']		= $this->M_master->get_data()->result();
+    		$this->load->view('cetak/cetak_all',$data);
     	}else{
     		redirect('login','refresh');
     	}
