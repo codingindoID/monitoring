@@ -13,9 +13,7 @@
 </script>
 <!-- Bootstrap 3.3.7 -->
 <script src="<?php echo base_url().'assets/'?>bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- Morris.js charts -->
-<script src="<?php echo base_url().'assets/'?>bower_components/raphael/raphael.min.js"></script>
-<script src="<?php echo base_url().'assets/'?>bower_components/morris.js/morris.min.js"></script>
+
 <!-- datepicker -->
 <script src="<?php echo base_url().'assets/'?>bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- Slimscroll -->
@@ -33,20 +31,9 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url().'assets/'?>dist/js/demo.js"></script>
 
-<!-- FLOT CHARTS -->
-<script src="<?php echo base_url().'assets/'?>bower_components/Flot/jquery.flot.js"></script>
-<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-<script src="<?php echo base_url().'assets/'?>bower_components/Flot/jquery.flot.resize.js"></script>
-<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-<script src="<?php echo base_url().'assets/'?>bower_components/Flot/jquery.flot.pie.js"></script>
-<!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-<script src="<?php echo base_url().'assets/'?>bower_components/Flot/jquery.flot.categories.js"></script>
-
 <!-- Select2 -->
 <script src="<?php echo base_url().'assets/'?>bower_components/select2/dist/js/select2.full.min.js"></script>
 
-<!-- ChartJS -->
-<script src="<?php echo base_url().'assets/'?>bower_components/chart.js/Chart.js"></script>
 <!-- button -->
 <script src="<?php echo base_url().'assets/bt_datatable/'?>dataTables.buttons.min.js"></script>
 <script src="<?php echo base_url().'assets/bt_datatable/'?>buttons.flash.min.js"></script>

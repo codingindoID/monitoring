@@ -211,12 +211,12 @@ class Master extends MY_Controller {
 
         		$data = array(
         			'id_data'			=> "INV-".uniqid(6),
-        			'no_pol'			=> $this->input->post('nopol'),
-        			'pemilik'			=> $this->input->post('pemilik'),
+        			'no_pol'			=> strtoupper($this->input->post('nopol')),
+        			'pemilik'			=> strtoupper($this->input->post('pemilik')),
         			'perusahaan'		=> $this->input->post('perusahaan'),
         			'jenis'				=> $this->input->post('jenis'),
-        			'merek'				=> $this->input->post('merek'),
-        			'seri'				=> $this->input->post('seri'),
+        			'merek'				=> strtoupper($this->input->post('merek')),
+        			'seri'				=> strtoupper($this->input->post('seri')),
         			'warna'				=> $this->input->post('warna'),
         			'id_kepemilikan'	=> $this->input->post('kepemilikan'),
         			'tgl_teregistrasi'	=> date('Y-m-d'),
@@ -286,11 +286,11 @@ class Master extends MY_Controller {
     		); 
 
     		$data = array(
-    			'pemilik'			=> $this->input->post('pemilik'),
+    			'pemilik'			=> strtoupper($this->input->post('pemilik')),
     			'perusahaan'		=> $this->input->post('perusahaan'),
     			'jenis'				=> $this->input->post('jenis'),
-    			'merek'				=> $this->input->post('merek'),
-    			'seri'				=> $this->input->post('seri'),
+    			'merek'				=> strtoupper($this->input->post('merek')),
+    			'seri'				=> strtoupper($this->input->post('seri')),
     			'warna'				=> $this->input->post('warna'),
     			'id_kepemilikan'	=> $this->input->post('kepemilikan'),
     			'tgl_kadaluwarsa'	=> date('Y-m-d',strtotime($this->input->post('dateexp')))
@@ -331,13 +331,45 @@ class Master extends MY_Controller {
     	}
     }
 
-    //cetak
+    //cetak vgp
+    function cetak_vgp()
+    {
+    	$lvl = $this->session->userdata('ses_level');
+    	if($lvl){
+    		$data['kendaraan']		= $this->M_master->get_data()->result();
+    		$data['title']		= "Master";
+    		$data['sub']		= "cetak VGP";
+    		$data['icon']		= "fa-print";
+    		$this->template->load('tema/v_index','vgp',$data);
+    	}else{
+    		redirect('login','refresh');
+    	}
+    }
+
+    //cetak all data vgp
     function cetak_all()
     {
     	$lvl = $this->session->userdata('ses_level');
     	if($lvl){
     		$data['kendaraan']		= $this->M_master->get_data()->result();
-    		$this->load->view('cetak/cetak_all',$data);
+    		$this->load->view('cetak/cetak_all', $data);
+    		//$this->template->load('tema/v_index','cetak/cetak_all',$data);
+    	}else{
+    		redirect('login','refresh');
+    	}
+    }
+
+    function cetak_satuan($no_pol)
+    {
+    	$lvl = $this->session->userdata('ses_level');
+    	if($lvl){
+    		$where = array(
+    			'no_pol'	=> $no_pol
+    		);
+
+    		$data['kendaraan']		= $this->M_master->get_data_by_id($where)->row();
+    		$this->load->view('cetak/cetak_satuan', $data);
+    		//echo json_encode($data);
     	}else{
     		redirect('login','refresh');
     	}

@@ -52,7 +52,7 @@
         <li class="header" style="color:black">ADMIN</li>
       </ul>
       <li>
-        <a href="<?php echo site_url('#') ?>">
+        <a href="<?php echo site_url('master/cetak_vgp') ?>">
           <i class="fa fa-print"></i> <span>Cetak VGP</span>
         </a>
       </li>
