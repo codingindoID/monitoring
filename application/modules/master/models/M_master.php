@@ -13,6 +13,23 @@ class M_master extends CI_Model {
 		return $this->db->get('tb_perusahaan');
 	}
 
+	function get_perusahaan_by_id($where)
+	{
+		return $this->db->get_where('tb_perusahaan',$where);
+	}
+
+	function hapus_perusahaan($where)
+	{
+		$this->db->where($where);
+		$this->db->delete('tb_perusahaan');
+	}
+
+	function update_perusahaan($where, $data)
+	{
+		$this->db->where($where);
+		$this->db->update('tb_perusahaan',$data);
+	}
+
 	function input_driver($data)
 	{
 		$this->db->insert('tb_pegawai', $data);

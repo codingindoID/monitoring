@@ -25,7 +25,7 @@
 							<td><?php echo $k->jenis ?></td>
 							<td><?php echo $k->merek ?></td>
 							<td><?php echo $k->seri ?></td>
-							<td class="text-center"><a href="<?php echo site_url('master/cetak_satuan/').$k->no_pol ?>" class="btn bg-purple" ><i class="fa fa-print"></i></a></td>
+							<td class="text-center"><a target="_blank" href="<?php echo site_url('master/cetak_satuan/').$k->no_pol ?>" class="btn bg-purple" ><i class="fa fa-print"></i></a></td>
 						</tr>
 					<?php endforeach ?>
 					

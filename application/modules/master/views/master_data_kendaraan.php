@@ -95,7 +95,7 @@
            <div class="form-group  col-xs-6">
              <label>Merk</label>
              <select name="merek" class="form-control select2" style="width: 100%;" required>
-               <option value="">---Merk---</option>
+               <option value="">---Merek---</option>
                <?php foreach ($merek as $m): ?>
                  <option value="<?php echo $m->id_merek ?>"><?php echo $m->merek ?></option>}
                  option

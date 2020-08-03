@@ -21,6 +21,69 @@ class Master extends MY_Controller {
 		}
 	}
 
+	//detil modal perusahaan edit
+	function detil_perusahaan($id)
+	{
+		$lvl = $this->session->userdata('ses_level');
+		if($lvl){
+			$where = array(
+				'id_perusahaan'	=> $id
+			);
+
+			$data = $this->M_master->get_perusahaan_by_id($where)->row();
+			echo json_encode($data);
+		}else{
+			redirect('login','refresh');
+		}
+	}
+
+	function update_perusahaan()
+	{
+		$lvl = $this->session->userdata('ses_level');
+		if($lvl){
+			$where = array(
+				'id_perusahaan'	=> $this->input->post('id_perusahaan')
+			);
+
+			$data = array(
+				'nama_perusahaan'		=> $this->input->post('nama_perusahaan'),
+				'deskripsi_perusahaan'	=> $this->input->post('deskripsi_perusahaan')
+			);
+
+			$cek = $this->M_master->update_perusahaan($where,$data);
+			if (!$cek) {
+				$this->session->set_flashdata('success','Data Perusahaan Diupdate');
+				redirect('master/perusahaan','refresh');
+			}else{
+				$this->session->set_flashdata('error','ups, ada yang salah,.');
+				redirect('master/perusahaan','refresh');
+			}
+		}else{
+			redirect('login','refresh');
+		}
+	}
+
+	function hapus_perusahaan($id)
+	{
+		$lvl = $this->session->userdata('ses_level');
+		if($lvl){
+			$where = array(
+				'id_perusahaan'	=> $id
+			);
+
+			$cek = $this->M_master->hapus_perusahaan($where);
+			if (!$cek) {
+				$this->session->set_flashdata('warning','Data Perusahaan dihapus');
+				redirect('master/perusahaan','refresh');
+			}else{
+				$this->session->set_flashdata('error','ups, ada yang salah,.');
+				redirect('master/perusahaan','refresh');
+			}
+		}else{
+			redirect('login','refresh');
+		}
+	}
+
 	public function  input_perusahaan()
 	{
 		$lvl = $this->session->userdata('ses_level');
@@ -43,45 +106,7 @@ class Master extends MY_Controller {
 	}
 
 
-	//master pegawai
-	public function driver()
-	{
-		$lvl = $this->session->userdata('ses_level');
-		if($lvl){
-			$data['title']		= 'Master';
-			$data['sub']		= 'data driver';
-			$data['icon']		= "fa-user";
-			$data['perusahaan']	= $this->M_master->get_perusahaan()->result();
-			$data['driver']		= $this->M_master->get_driver()->result();
-			$this->template->load('tema/v_index','master_pegawai',$data);
-		}else{
-			redirect('login','refresh');
-		}
-	}
-
-	public function  input_driver()
-	{
-		$lvl = $this->session->userdata('ses_level');
-		if($lvl){
-			$data = array(
-				'id_pegawai'			=> uniqid(6),
-				'nama_pegawai'			=> $this->input->post('nama'),
-				'id_perusahaan'			=> $this->input->post('perusahaan')
-			);
-			$cek = $this->M_master->input_driver($data);
-			if (!$cek) {
-				$this->session->set_flashdata('success','Perusahaan berhasil didaftarkan');
-				redirect('master/driver','refresh');
-			}else{
-				$this->session->set_flashdata('error','ups, ada yang salah,.');
-				redirect('master/driver','refresh');
-			}
-		}else{
-			redirect('login','refresh');
-		}
-	}
-
-	//master pegawai
+	//master merek
 	public function merek()
 	{
 		$lvl = $this->session->userdata('ses_level');
