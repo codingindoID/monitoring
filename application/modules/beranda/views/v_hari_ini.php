@@ -39,7 +39,9 @@
           </tr>
         </thead>
         <tbody>
-          <?php foreach ($kunjungan as $k): ?>
+          <?php 
+          $pesan_hapus = "'apakah anda akan menghapus data ini?'";
+          foreach ($kunjungan as $k): ?>
             <tr>
              <td><?php echo $k->id_kunjungan ?></td>
              <td><?php echo $k->no_pol ?></td>
@@ -55,7 +57,9 @@
                 <a  data-toggle="modal" data-target="#modalkeluar" onclick="edit('<?php echo $k->id_kunjungan ?>')" class="btn-sm btn-warning"><i class="fa fa-power-off"></i></a>
               <?php }else{ ?>
                <a class="btn-sm btn-success"><i class="fa fa-check"></i></a>
-             <?php } ?> 
+             <?php } ?>
+
+             <?php echo $this->session->userdata('ses_level')=='2' ? '<a onclick="return confirm('.$pesan_hapus.')" class="btn-sm btn-danger" href="beranda/hapus_kunjungan/'.$k->id_kunjungan.'/1"><i class="fa fa-trash"></i></a>' : '';?> 
            </td>
          </tr>
        <?php endforeach ?>

@@ -66,6 +66,15 @@ class M_beranda extends CI_Model {
 		return $this->db->get();
 	}
 
+
+
+	/*MENU SUPER ADMIN*/
+	function hapus_kunjungan($where, $table)
+	{
+		$this->db->where($where);
+		$this->db->delete($table);
+	}
+
 }
 
 /* End of file M_beranda.php */
