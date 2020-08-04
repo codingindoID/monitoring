@@ -70,6 +70,14 @@ class M_dashboard extends CI_Model {
 		return $this->db->get_where('tb_kunjungan', $where);
 	}
 
+	
+	/*MENU SUPER ADMIN*/
+	function hapus_kunjungan($where, $table)
+	{
+		$this->db->where($where);
+		$this->db->delete($table);
+	}
+
 }
 
 /* End of file M_dashboard.php */

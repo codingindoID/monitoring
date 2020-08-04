@@ -59,7 +59,7 @@
                <a class="btn-sm btn-success"><i class="fa fa-check"></i></a>
              <?php } ?>
 
-             <?php echo $this->session->userdata('ses_level')=='2' ? '<a onclick="return confirm('.$pesan_hapus.')" class="btn-sm btn-danger" href="beranda/hapus_kunjungan/'.$k->id_kunjungan.'/1"><i class="fa fa-trash"></i></a>' : '';?> 
+             <?php echo $this->session->userdata('ses_level')=='2' ? '<a onclick="return confirm('.$pesan_hapus.')" class="btn-sm btn-danger" href="beranda/hapus_kunjungan/'.$k->id_kunjungan.'/1/null/null"><i class="fa fa-trash"></i></a>' : '';?> 
            </td>
          </tr>
        <?php endforeach ?>
@@ -179,7 +179,7 @@
             <input type="text" class="form-control" placeholder="Perusahaan" id="pemilik" name="perusahaan">
           </div> 
         </div>
-        <input type="text" name="jenis" value="non_rutin" hidden>
+        <!-- <input type="text" name="jenis" value="non_rutin" hidden> -->
         <!-- end body -->
         <div class="modal-footer">
           <input type="submit" class="col-lg-12 btn bg-purple">

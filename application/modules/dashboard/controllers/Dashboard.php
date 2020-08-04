@@ -135,6 +135,38 @@ class Dashboard extends MY_Controller {
 		}
 	}
 
+	/*MENU SUPER ADMIN*/
+	function hapus_kunjungan($id,$param)
+	{
+		$lvl 	= $this->session->userdata('ses_level');
+		if ($lvl=='2'){
+			$where = array(
+				'id_kunjungan'		=> $id
+			);
+
+			$cek = $this->M_dashboard->hapus_kunjungan($where,'tb_kunjungan');
+			if (!$cek) {
+				$this->session->set_flashdata('warning','Kunjungan Berhasil Dihapus');
+				if($param == 'rutin'){
+					redirect('dashboard/rutin','refresh');
+				}else{
+					redirect('dashboard/non_rutin','refresh');
+				}
+				
+			}else{
+				$this->session->set_flashdata('error','ups, ada yang salah,.');
+				if($param == 'rutin'){
+					redirect('dashboard/rutin','refresh');
+				}else{
+					redirect('dashboard/non_rutin','refresh');
+				}
+			}
+
+		}else{
+			redirect('login','refresh');
+		}
+	}
+
 }
 
 /* End of file Dashboard.php */

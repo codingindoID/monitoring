@@ -98,7 +98,7 @@
           .addClass( 'compact' )
           .css( 'font-size', 'inherit' );
         }
-      },
+      }/*,
       {
         extend: 'pdf',
         exportOptions:{
@@ -112,7 +112,7 @@
           doc.content[1].table.widths = 
           Array(doc.content[1].table.body[0].length + 1).join('*').split('');
         }
-      }
+      }*/
       ]
     })
     $('#tb4').DataTable({
@@ -149,9 +149,9 @@
         extend: 'excel',
         title: '<?php echo $sub ?>',
         exportOptions:{
-          columns:[0,2,3,4,5,6,7]
+          columns:[0,2,3,4,5,6,7,8,9]
         },
-      },
+      }/*,
       {
         extend: 'print',
         exportOptions:{
@@ -181,7 +181,7 @@
           doc.content[1].table.widths = 
           Array(doc.content[1].table.body[0].length + 1).join('*').split('');
         }
-      }
+      }*/
       ]
     })
     

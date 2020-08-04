@@ -123,7 +123,7 @@ class Beranda extends MY_Controller {
 						'no_pol'			=> $detil->no_pol,
 						'tgl_kunjungan'		=> date('Y-m-d'),
 						'jam_masuk'			=> date('H:i:s'),
-						'jenis_kunjungan'	=> $this->input->post('jenis'),
+						'jenis_kunjungan'	=> 'rutin',
 						'driver'			=> $detil->pemilik,
 						'perusahaan'		=> $detil->perusahaan,
 						'tahun'				=> date('Y'),
@@ -135,7 +135,7 @@ class Beranda extends MY_Controller {
 						'no_pol'			=> $this->input->post('no_pol'),
 						'tgl_kunjungan'		=> date('Y-m-d'),
 						'jam_masuk'			=> date('H:i:s'),
-						'jenis_kunjungan'	=> $this->input->post('jenis'),
+						'jenis_kunjungan'	=> 'non_rutin',
 						'driver'			=> $this->input->post('pemilik'),
 						'perusahaan'		=> $this->input->post('perusahaan'),
 						'tahun'				=> date('Y'),
@@ -291,7 +291,7 @@ class Beranda extends MY_Controller {
 
 
 	/*MENU SUPER ADMIN*/
-	function hapus_kunjungan($id,$param)
+	function hapus_kunjungan($id,$param,$start,$end)
 	{
 		$lvl 	= $this->session->userdata('ses_level');
 		if ($lvl=='2'){
@@ -305,7 +305,7 @@ class Beranda extends MY_Controller {
 				if($param == '1'){
 					redirect('beranda','refresh');
 				}else{
-					redirect('beranda/filter','refresh');
+					redirect('beranda/filter_on_from_filter/'.$start.'/'.$end,'refresh');
 				}
 				
 			}else{
@@ -313,7 +313,7 @@ class Beranda extends MY_Controller {
 				if($param == '1'){
 					redirect('beranda','refresh');
 				}else{
-					redirect('beranda/filter','refresh');
+					redirect('beranda/filter_on_from_filter/'.$start.'/'.$end,'refresh');
 				}
 			}
 

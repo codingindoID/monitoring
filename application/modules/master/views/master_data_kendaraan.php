@@ -16,7 +16,7 @@
       <table id="tb4" class="table table-bordered table-striped">
         <thead>
           <tr>
-            <th>Kode</th>
+            <th>Kode Register</th>
             <th class="text-center">QR CODE</th>
             <th>No-Pol</th>
             <th>Driver</th>

@@ -1,57 +1,4 @@
-<div class="box">
-  <div class="box-header with-border" data-widget="collapse" style="cursor: pointer;">
-    <h3 class="box-title" data-widget="collapse" style="cursor: pointer;font-size: 15px;">Filter Tanggal</h3>
-
-    <div class="box-tools pull-right">
-      <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-      </button>
-    </div>
-  </div>
-  <div class="box-body">
-    <div class="col">
-
-     <form role="form" action="<?php echo site_url('beranda/filter_on') ?>" method="post" id="filterform">
-      <div class="row" style="margin-right: 10px;margin-left: 10px;">
-        <div class="col-lg-6 col-md-6 col-xs-6">
-          <div class="form-group">
-            <label>mulai tanggal </label>
-
-            <div class="input-group date">
-              <div class="input-group-addon">
-                <i class="fa fa-calendar"></i>
-              </div>
-              <input  required="true" name="startdate"  type="text" class="form-control pull-right" id="datepicker" value="<?php echo $start != null ? date('d-m-Y',strtotime($start)) :'' ?>">
-            </div>
-            <!-- /.input group -->
-          </div>
-
-        </div>
-
-        <div class="col-lg-6 col-md-6 col-xs-6">
-          <div class="form-group">
-            <label>sampai dengan</label>
-
-            <div class="input-group date">
-              <div class="input-group-addon">
-                <i class="fa fa-calendar"></i>
-              </div>
-              <input required="true" type="text" name="enddate" class="form-control pull-right" id="dateend" value="<?php echo $end != null ? date('d-m-Y',strtotime($end)) :'' ?>" >
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row" style="margin-right: 10px;">
-        <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top: -5px">
-          <button type="submit" class="btn btn-success pull-right" ><i class="fa fa-filter"></i> filter</a>
-          </div>
-        </div>
-      </form>
-
-    </div>
-  </div>
-</div>
-
-<div class="box"  style="margin-top: -20px;">
+<div class="box" >
   <div class="box-header">
   </div>
   <!-- /.box-header -->
@@ -85,7 +32,9 @@
              <td></td>
            </tr>
          <?php }else{ ?>
-          <?php foreach ($kunjungan as $k): ?>
+          <?php 
+          $pesan_hapus = "'apakah anda akan menghapus data ini?'";
+          foreach ($kunjungan as $k): ?>
            <tr>
              <td><?php echo $k->id_kunjungan ?></td>
              <td><?php echo $k->no_pol ?></td>
@@ -101,6 +50,7 @@
               <?php }else{ ?>
                <a class="btn-sm btn-success"><i class="fa fa-check"></i></a>
              <?php } ?> 
+             <?php echo $this->session->userdata('ses_level')=='2' ? '<a onclick="return confirm('.$pesan_hapus.')" class="btn-sm btn-danger" href="dashboard/hapus_kunjungan/'.$k->id_kunjungan.'/rutin"><i class="fa fa-trash"></i></a>' : '';?> 
            </td>
          <?php endforeach ?>
        <?php } ?>
