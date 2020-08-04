@@ -11,7 +11,7 @@
               <label>Pemilik / Driver</label>
               <input type="text" class="form-control" placeholder="Nama Pemilik" name="pemilik" required>
             </div> 
-            <div class="form-group col-xs-12">
+            <div class="form-group col-xs-6">
               <label>Perusahaan</label>
               <select name="perusahaan" class="form-control select2" style="width: 100%;" required>
                <option value="">--Perusahaan--</option>
@@ -22,10 +22,14 @@
                <?php endforeach ?>
              </select>
            </div>
+           <div class="form-group col-xs-6">
+              <label>Nomor ID</label>
+              <input type="number" class="form-control" placeholder="Nomor ID" name="sim" required>
+           </div>
            <div class="form-group  col-xs-6">
-             <label>Jenis</label>
+             <label>Jenis Kendaraan</label>
              <select name="jenis" class="form-control select2" style="width: 100%;" required>
-               <option value="">---Jenis---</option>
+               <option value="">---Jenis Kendaraan---</option>
                <option value="mobil">Mobil</option>
                <option value="motor">Motor</option>
                <option value="mobil box">Mobil Box</option>
@@ -51,9 +55,9 @@
             <input type="text" class="form-control" placeholder="warna" name="warna" required>
           </div> 
           <div class="form-group  col-xs-6">
-           <label>Kepemilikan</label>
+           <label>Jenis</label>
            <select name="kepemilikan" class="form-control" style="width: 100%;" required>
-             <option value="">---Kepemilikan---</option>
+             <option value="">---Jenis---</option>
              <option value="1">Pribadi</option>
              <option value="2">Operasional</option>    
            </select>

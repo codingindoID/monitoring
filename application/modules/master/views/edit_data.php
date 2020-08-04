@@ -12,7 +12,7 @@
 					<label>Pemilik / Driver</label>
 					<input value="<?php echo $kendaraan->pemilik ?>" type="text" class="form-control" placeholder="Nama Pemilik" name="pemilik" required>
 				</div> 
-				<div class="form-group col-xs-12">
+				<div class="form-group col-xs-6">
 					<label>Perusahaan</label>
 					<select name="perusahaan" class="form-control select2" style="width: 100%;" required>
 						<option value="">--Perusahaan--</option>
@@ -23,10 +23,14 @@
 						<?php endforeach ?>
 					</select>
 				</div>
+				<div class="form-group col-xs-6">
+					<label>Nomor ID</label>
+					<input type="number" class="form-control" placeholder="Nomor ID" name="sim" required value="<?php echo $kendaraan->sim ?>">
+				</div>
 				<div class="form-group  col-xs-6">
-					<label>Jenis</label>
+					<label>Jenis Kendaraan</label>
 					<select name="jenis" class="form-control select2" style="width: 100%;" required>
-						<option value="">---Jenis---</option>
+						<option value="">---Jenis kendaraan---</option>
 						<option value="mobil" <?php echo 'mobil'==$kendaraan->jenis ? 'selected' : ''?>>Mobil</option>
 						<option value="motor" <?php echo $kendaraan->jenis=='motor' ? 'selected' : ''?>>Motor</option>
 						<option value="mobil box"  <?php echo $kendaraan->jenis=='mobil box' ? 'selected' : ''?>>Mobil Box</option>
@@ -52,9 +56,9 @@
 					<input value="<?php echo $kendaraan->warna ?>" type="text" class="form-control" placeholder="warna" name="warna" required>
 				</div> 
 				<div class="form-group  col-xs-6">
-					<label>Kepemilikan</label>
+					<label>Jenis</label>
 					<select name="kepemilikan" class="form-control" style="width: 100%;" required>
-						<option value="">---Kepemilikan---</option>
+						<option value="">---Jenis---</option>
 						<option value="1" <?php echo $kendaraan->id_kepemilikan=='1' ? 'selected' : ''?>>Pribadi</option>
 						<option value="2" <?php echo $kendaraan->id_kepemilikan=='2' ? 'selected' : ''?>>Operasional</option>    
 					</select>
@@ -71,8 +75,8 @@
 			</div>
 		</div>
 		<div class="modal-footer">
-			<button type="submit" class="btn bg-purple pull-left"><i class="fa fa-save"></i> Simpan Perubahan</button>
-			<a href="<?php echo site_url('master/hapus_data_kendaraan/').$kendaraan->id_data ?>" class="btn btn-danger pull-right"><i class="fa fa-trash"></i> Hapus Data</a>
+			<a onclick="return confirm('hapus data ini?')" style="margin-right: 10px;" href="<?php echo site_url('master/hapus_data_kendaraan/').$kendaraan->id_data ?>" class="btn btn-default pull-right"><i class="fa fa-trash"></i> Hapus</a>
+			<button type="submit" class="btn bg-purple pull-right" style="margin-right: 10px;"><i class="fa fa-save"></i> Simpan Perubahan</button>
 		</div>
 	</form>
 </div>

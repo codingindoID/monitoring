@@ -9,6 +9,7 @@
 					<tr>
 						<th>NO_POL</th>
 						<th>Driver</th>
+						<th>No ID</th>
 						<th>Perusahaan</th>
 						<th>Jenis Kendaraan</th>
 						<th>Merek</th>
@@ -21,6 +22,7 @@
 						<tr>
 							<td><?php echo $k->no_pol ?></td>
 							<td><?php echo $k->pemilik ?></td>
+							<td><?php echo $k->sim ?></td>
 							<td><?php echo $k->perusahaan ?></td>
 							<td><?php echo $k->jenis ?></td>
 							<td><?php echo $k->merek ?></td>

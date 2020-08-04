@@ -243,6 +243,7 @@ class Master extends MY_Controller {
         			'merek'				=> strtoupper($this->input->post('merek')),
         			'seri'				=> strtoupper($this->input->post('seri')),
         			'warna'				=> $this->input->post('warna'),
+        			'sim'				=> $this->input->post('sim'),
         			'id_kepemilikan'	=> $this->input->post('kepemilikan'),
         			'tgl_teregistrasi'	=> date('Y-m-d'),
         			'tgl_kadaluwarsa'	=> date('Y-m-d',strtotime($this->input->post('dateexp'))),
@@ -316,6 +317,7 @@ class Master extends MY_Controller {
     			'jenis'				=> $this->input->post('jenis'),
     			'merek'				=> strtoupper($this->input->post('merek')),
     			'seri'				=> strtoupper($this->input->post('seri')),
+    			'sim'				=> $this->input->post('sim'),
     			'warna'				=> $this->input->post('warna'),
     			'id_kepemilikan'	=> $this->input->post('kepemilikan'),
     			'tgl_kadaluwarsa'	=> date('Y-m-d',strtotime($this->input->post('dateexp')))

@@ -29,6 +29,7 @@
             <th>ID Kunjungan</th>
             <th class="text-center">NO-POL</th>
             <th class="text-center">Driver</th>
+            <th class="text-center">No ID</th>
             <th class="text-center">Perusahaan</th>
             <th class="text-center">Jenis Kunjungan</th>
             <th class="text-center">Tanggal Kunjungan</th>
@@ -46,6 +47,7 @@
              <td><?php echo $k->id_kunjungan ?></td>
              <td><?php echo $k->no_pol ?></td>
              <td><?php echo $k->driver ?></td>
+             <td><?php echo $k->sim ?></td>
              <td><?php echo $k->perusahaan ?></td>
              <td><?php echo $k->jenis_kunjungan ?></td>
              <td><?php echo date('d-m-Y', strtotime($k->tgl_kunjungan)) ?></td>
@@ -178,6 +180,10 @@
             <label>Perusahaan</label>
             <input type="text" class="form-control" placeholder="Perusahaan" id="pemilik" name="perusahaan">
           </div> 
+          <div class="form-group">
+            <label>Nomor ID</label>
+            <input type="text" class="form-control" placeholder="Nomor ID" id="no_id" name="sim">
+          </div>
         </div>
         <!-- <input type="text" name="jenis" value="non_rutin" hidden> -->
         <!-- end body -->

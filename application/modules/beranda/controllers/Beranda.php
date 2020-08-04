@@ -125,6 +125,7 @@ class Beranda extends MY_Controller {
 						'jam_masuk'			=> date('H:i:s'),
 						'jenis_kunjungan'	=> 'rutin',
 						'driver'			=> $detil->pemilik,
+						'sim'				=> $detil->sim,
 						'perusahaan'		=> $detil->perusahaan,
 						'tahun'				=> date('Y'),
 						'bulan'				=> date('m')
@@ -137,6 +138,7 @@ class Beranda extends MY_Controller {
 						'jam_masuk'			=> date('H:i:s'),
 						'jenis_kunjungan'	=> 'non_rutin',
 						'driver'			=> $this->input->post('pemilik'),
+						'sim'				=> $this->input->post('sim'),
 						'perusahaan'		=> $this->input->post('perusahaan'),
 						'tahun'				=> date('Y'),
 						'bulan'				=> date('m')

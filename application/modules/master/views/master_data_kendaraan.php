@@ -20,6 +20,7 @@
             <th class="text-center">QR CODE</th>
             <th>No-Pol</th>
             <th>Driver</th>
+            <th>No ID</th>
             <th>Perusahaan</th>
             <th>Jenis</th>
             <th>Merek</th>
@@ -35,6 +36,7 @@
               <td style="word-break:break-all;" width="10%" class="text-center"><a target="_blank" href="<?php echo base_url('assets/image/qr_code/').$k->qr_code ?>"><img class="img_qr" src="<?php  echo base_url().'assets/image/qr_code/'.$k->qr_code ?>"></a></td>
               <td><?php  echo $k->no_pol ?></td>
               <td><?php  echo $k->pemilik ?></td>
+              <td><?php  echo $k->sim ?></td>
               <td><?php  echo $k->perusahaan ?></td>
               <td><?php  echo $k->jenis ?></td>
               <td><?php  echo $k->merek ?></td>
@@ -83,10 +85,11 @@
              </select>
            </div>
            <div class="form-group  col-xs-6">
-             <label>Jenis</label>
+             <label>Jenis Kendaraan</label>
              <select name="jenis" class="form-control select2" style="width: 100%;" required>
-               <option value="">---Jenis---</option>
+               <option value="">---Jenis kendaraan---</option>
                <option value="mobil">Mobil</option>
+               <option value="motor">Bus</option>
                <option value="motor">Motor</option>
                <option value="mobil box">Mobil Box</option>
                <option value="Lainnya">Lainnya</option>
@@ -111,9 +114,9 @@
             <input type="text" class="form-control" placeholder="warna" name="warna" required>
           </div> 
           <div class="form-group  col-xs-6">
-           <label>Kepemilikan</label>
+           <label>Jenis</label>
            <select name="kepemilikan" class="form-control" style="width: 100%;" required>
-             <option value="">---Kepemilikan---</option>
+             <option value="">---Jenis---</option>
              <option value="1">Pribadi</option>
              <option value="2">Operasional</option>    
            </select>

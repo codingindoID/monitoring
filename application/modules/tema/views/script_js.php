@@ -80,13 +80,13 @@
         extend: 'excel',
         title: '<?php echo $sub ?>',
         exportOptions:{
-          columns:[0,1,2,3,4,5,6,7]
+          columns:[0,1,2,3,4,5,6,7,8]
         },
       },
       {
         extend: 'print',
         exportOptions:{
-          columns:[0,1,2,3,4,5,6,7]
+          columns:[0,1,2,3,4,5,6,7,8]
         },
         title: function() {
           return "<div style='font-size: 20px;'><Strong><center><?php echo $sub ?></center></strong></div>";

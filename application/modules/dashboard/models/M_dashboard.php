@@ -70,6 +70,11 @@ class M_dashboard extends CI_Model {
 		return $this->db->get_where('tb_kunjungan', $where);
 	}
 
+	function keluar($where, $data)
+	{
+		$this->db->where($where);
+		$this->db->update('tb_kunjungan', $data);
+	}
 	
 	/*MENU SUPER ADMIN*/
 	function hapus_kunjungan($where, $table)

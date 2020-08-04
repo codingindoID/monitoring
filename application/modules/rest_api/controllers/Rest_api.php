@@ -118,6 +118,7 @@ class Rest_api extends MY_Controller {
 				'jam_masuk'			=> date('H:i:s'),
 				'jenis_kunjungan'	=> 'rutin',
 				'driver'			=> $detil->pemilik,
+				'sim'				=> $detil->sim,
 				'perusahaan'		=> $detil->perusahaan,
 				'tahun'				=> date('Y'),
 				'bulan'				=> date('m')
@@ -156,6 +157,7 @@ class Rest_api extends MY_Controller {
 				'id_kunjungan'		=> $cek_data->id_kunjungan,
 				'no_pol'			=> $cek_data->no_pol,
 				'driver'			=> $cek_data->driver,
+				'sim'				=> $cek_data->sim,
 				'tgl_kunjungan'		=> date('d-F-Y',strtotime($cek_data->tgl_kunjungan)),
 				'jam_masuk'			=> $cek_data->jam_masuk,
 				'jenis_kunjungan'	=> $cek_data->jenis_kunjungan
@@ -194,6 +196,7 @@ class Rest_api extends MY_Controller {
 		$data = array(
 			'no_pol'			=> $this->input->post('no_pol'),
 			'driver'			=> $this->input->post('driver'),
+			'sim'				=> $this->input->post('sim'),
 			'perusahaan'		=> $this->input->post('perusahaan'),
 			'id_kunjungan'		=> "KUNJ-".uniqid(6),
 			'tgl_kunjungan'		=> date('Y-m-d'),

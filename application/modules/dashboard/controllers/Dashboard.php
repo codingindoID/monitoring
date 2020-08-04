@@ -135,6 +135,48 @@ class Dashboard extends MY_Controller {
 		}
 	}
 
+	/*aksi keluar dari beranda*/
+	public function aksi_keluar()
+	{
+		$lvl 	= $this->session->userdata('ses_level');
+
+		if ($lvl){
+			date_default_timezone_set("Asia/Bangkok");
+			$where = array(
+				'id_kunjungan'	=> $this->input->post('id_kunjungan')
+			);
+
+			$data = array(
+				'jam_keluar'	=> date('H:i:s'),
+				'tgl_keluar'	=> date('Y-m-d')
+			);
+
+			
+			$cek = $this->M_dashboard->keluar($where,$data);
+			if (!$cek) {
+				$jenis = $this->input->post('jenis');
+				$this->session->set_flashdata('success','kunjungan dengan id : '.$this->input->post('id_kunjungan')." telah selesai");
+				
+				if ($jenis=='1') {
+					redirect('dashboard/rutin','refresh');
+				}else{
+					redirect('dashboard/non_rutin','refresh');
+				}
+				
+			}else{
+				$this->session->set_flashdata('warning','ups,ada yang salah');
+				if ($jenis=='1') {
+					redirect('dashboard/rutin','refresh');
+				}else{
+					redirect('dashboard/non_rutin','refresh');
+				}
+			}
+
+		}else{
+			redirect('login','refresh');
+		}
+	}
+
 	/*MENU SUPER ADMIN*/
 	function hapus_kunjungan($id,$param)
 	{
