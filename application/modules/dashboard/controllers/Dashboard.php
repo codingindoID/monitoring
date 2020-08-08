@@ -51,52 +51,42 @@ class Dashboard extends MY_Controller {
 		}
 	}
 
-	public function filter()
+	function chart($tahun)
 	{
-		$lvl 	= $this->session->userdata('ses_level');
-		if ($lvl){
-			$st_q 		=  $this->input->post('startdate');
-			$start 		= date('Y-m-d',strtotime($st_q)) ;
+		$bulan = $this->M_dashboard->bulan()->result();
+		$no = 0;
 
-			$end_q 		= $this->input->post('enddate');
-			$end 		=  date('Y-m-d',strtotime($end_q));
-
-			$id_user	= $this->session->userdata('ses_id');
-			$queri	 	= "tgl_kunjungan between '".$start."' and '".$end."'";
-
-			$data['title']		= 'Dashboard';
-			$data['sub']		= ' ';
-			$data['icon']		= "fa-dashboard";
-			$data['start']		= $start;
-			$data['end']		= $end;
-
-			$data['total']			= $this->M_dashboard->get_kunjungan_filter($queri)->num_rows();
-			$data['rutin']			= $this->M_dashboard->get_kunjungan_status($queri,'rutin')->num_rows();
-			$data['non']			= $this->M_dashboard->get_kunjungan_status($queri,'non_rutin')->num_rows();
-			$data['filter_tahun']	= $this->M_dashboard->tahun()->result();
-			//echo $queri;
-			$bulan = $this->M_dashboard->bulan()->result();
-			$no = 0;
-
+		/*chart rutin*/
+		foreach ($bulan as $bulan) {
 			/*chart rutin*/
-			foreach ($bulan as $bulan) {
-				/*chart rutin*/
-				$rutin[$no] = array(
-					'hasil' => $this->M_dashboard->get_statistik(date('Y'),$bulan->id_bulan,'rutin')->num_rows()
-				);
+			$rutin[$no] = array(
+				'hasil' => $this->M_dashboard->get_statistik($tahun,$bulan->id_bulan,'rutin')->num_rows()
+			);
 
-				/*chart non rutin*/
-				$non_rutin[$no] = array(
-					'hasil'	=> $this->M_dashboard->get_statistik(date('Y'),$bulan->id_bulan,'non_rutin')->num_rows()
-				);
-				$no++;
-			}
-			$data['chart_rutin'] 		= array_column($rutin, 'hasil');
-			$data['chart_non_rutin'] 	= array_column($non_rutin, 'hasil');
-			$this->template->load('tema/v_index','v_dashboard',$data);
-		}else{
-			redirect('login','refresh');
+			/*chart non rutin*/
+			$non_rutin[$no] = array(
+				'hasil'	=> $this->M_dashboard->get_statistik($tahun,$bulan->id_bulan,'non_rutin')->num_rows()
+			);
+			$no++;
 		}
+		$data['chart_rutin'] 		= array_column($rutin, 'hasil');
+		$data['chart_non_rutin'] 	= array_column($non_rutin, 'hasil');
+
+		echo json_encode($data);
+	}
+	function aksi_filter($s,$e)
+	{
+		$start 		= date('Y-m-d',strtotime($s)) ;
+		$end 		=  date('Y-m-d',strtotime($e));
+
+		$id_user	= $this->session->userdata('ses_id');
+		$queri	 	= "tgl_kunjungan between '".$start."' and '".$end."'";
+
+		$data['total']			= $this->M_dashboard->get_kunjungan_filter($queri)->num_rows();
+		$data['rutin']			= $this->M_dashboard->get_kunjungan_status($queri,'rutin')->num_rows();
+		$data['non']			= $this->M_dashboard->get_kunjungan_status($queri,'non_rutin')->num_rows();
+
+		echo json_encode($data);
 	}
 
 	function rutin()

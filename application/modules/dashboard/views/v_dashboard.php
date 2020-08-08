@@ -16,12 +16,13 @@
       <div class="col-lg-6 col-md-6 col-xs-12">
 
         <div class="box" style="padding: 5px;">
-        <!-- <span style="margin-left: 10px;">Filter</span>
-        <select class="form-group" style="width:100px;margin-left: 10px;" onchange="tahun('ok')">
+        <div class="form-group">
+        <select class="form-control" style="width:100px;margin-left: 10px;" id="grafik_tahun">
          <?php foreach ($filter_tahun as $f): ?>
             <option value="<?php echo $f->tahun ?>" <?php echo date('Y')==$f->tahun ? 'selected' : '' ?>><?php echo $f->tahun ?></option>
           <?php endforeach ?> 
-        </select> -->
+        </select>
+        </div>
         <figure class="highcharts-figure">
           <div id="container"></div>
           <p class="highcharts-description" style="padding: 10px;">
@@ -43,12 +44,12 @@
           </div>
         </div>
         <div class="box-body">
-          <form role="form" action="<?php echo site_url('dashboard/filter') ?>" method="post" id="filterform">
             <div class="box-body">
               <div class="col">
 
                 <div class="row" style="margin-right: 10px;margin-left: 10px;">
                   <div class="col-lg-6 col-md-6 col-xs-6">
+                    <input type="hidden" id="baseurl" value="<?php echo site_url() ?>">
                     <div class="form-group">
                       <label>mulai tanggal </label>
 
@@ -79,18 +80,18 @@
 
                 <div class="row" style="margin-right: 10px;">
                   <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top: -5px">
-                    <button type="submit" class="btn btn-success pull-right" ><i class="fa fa-filter"></i> filter</button>
+                   <button type="submit" class="btn btn-success pull-right" id="bt_filter" ><i class="fa fa-filter"></i> filter</button>
                   </div>
                 </div>
               </div>
             </div>
-          </form>
+          <!-- </form> -->
         </div>
       </div>
       <!-- total -->
       <div class="small-box bg-purple">
        <div class="inner">
-        <center><h3><?php echo $total ?></h3></center>
+        <center><h3><span id="tx_total"><?php echo $total ?></span></h3></center>
 
         <center><p>Total Kunjungan</p></center>
       </div>
@@ -103,7 +104,7 @@
     <!-- rutin -->
     <div class="small-box bg-green">
      <div class="inner">
-      <center><h3><?php echo $rutin ?></h3></center>
+      <center><h3 id="tx_rutin"><?php echo $rutin ?></h3></center>
 
       <center><p>Pengunjung Rutin</p></center>
     </div>
@@ -116,7 +117,7 @@
   <!-- non rutin -->
   <div class="small-box bg-blue" >
    <div class="inner">
-    <center><h3><?php echo $non ?></h3></center>
+    <center><h3 id="tx_non"><?php echo $non ?></h3></center>
 
     <center><p>Pengunjung Tidak Rutin</p></center>
   </div>
@@ -130,6 +131,10 @@
 </div>
 </div>
 <!-- end data -->
+
+<!-- MY -->
+<script src="<?php echo base_url().'assets/'?>bower_components/jquery/dist/jquery.min.js"></script>
+<script src="<?php echo base_url().'assets/my_js/jsdashboard.js'?>"></script>
 
 <!-- js chart -->
 <script type="text/javascript">
