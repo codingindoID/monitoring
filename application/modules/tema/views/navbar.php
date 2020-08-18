@@ -29,7 +29,7 @@
 
            <p>
             <?php echo $this->session->userdata('ses_nama'); ?>
-            <small>E-Monitoring</small>
+            <small><p class="login-box-msg">SISTEM MINITORING KELUAR MASUK KENDARAAN DI PLTU TANJUNG JATI B JEPARA</p></small>
           </p>
         </li>
         <!-- Menu Footer-->
