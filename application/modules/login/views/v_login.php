@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="<?php echo base_url('assets/dist/img/app.png') ?>">
   <title>E-Monitoring| Log in</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -34,7 +35,7 @@
     </style>
 
     <div class="login-box-body">
-      <center><img src="<?php echo base_url().'assets/'?>dist/img/app.jpg" class="logo-img"></center>
+      <center><img src="<?php echo base_url().'assets/'?>dist/img/app.png" class="logo-img"></center>
       <?php if($this->session->flashdata('success')){ ?>  
       <div class="alert alert-success">  
         <strong>Success!</strong> <?php echo $this->session->flashdata('success'); ?>  
@@ -43,7 +44,7 @@
         <strong>Error!</strong> <?php echo $this->session->flashdata('error'); ?>  
       </div>  
       <?php } ?>
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">SISTEM MINITORING KELUAR MASUK KENDARAAN DI PLTU TANJUNG JATI B JEPARA</p>
 
       <form action="<?php echo site_url('login/aksi_login')?>" method="post">
         <div class="form-group has-feedback">
